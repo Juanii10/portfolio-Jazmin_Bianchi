@@ -1,0 +1,66 @@
+{
+  "sources": {
+    "main": { "file": "PORTFOLIO JAZMIN BIANCHI.png", "scale": 1 },
+    "pap": { "file": "01. Papelería.png", "scale": 2 },
+    "exp": { "file": "01. Experimentación.png", "scale": 2 },
+    "dig": { "file": "03. Diseño digital.png", "scale": 2 },
+    "pos": { "file": "04. Posters.png", "scale": 2 },
+    "po2": { "file": "04. Posters 2.png", "scale": 2 },
+    "po3": { "file": "04. Posters 3.png", "scale": 2 },
+    "po4": { "file": "04. Posters 4.png", "scale": 2 }
+  },
+  "crops": [
+    { "name": "home-hero", "src": "main", "x": 0, "y": 92, "w": 1274, "h": 631 },
+    { "name": "home-quote", "src": "main", "x": 0, "y": 723, "w": 1274, "h": 750 },
+
+    { "name": "pap-hero", "src": "pap", "x": 26, "y": 113, "w": 1222, "h": 599 },
+    { "name": "pap-raptor", "src": "pap", "x": 520, "y": 832, "w": 700, "h": 200 },
+    { "name": "pap-raptor-fotos", "src": "pap", "x": 49, "y": 1089, "w": 1177, "h": 254 },
+    { "name": "pap-tarjetones", "src": "pap", "x": 440, "y": 1437, "w": 834, "h": 723 },
+    { "name": "pap-tarjetones-mock", "src": "pap", "x": 57, "y": 1758, "w": 333, "h": 223 },
+    { "name": "pap-fiore-tarjetas", "src": "pap", "x": 0, "y": 2497, "w": 1274, "h": 617 },
+    { "name": "pap-sefina", "src": "pap", "x": 0, "y": 3114, "w": 862, "h": 599 },
+    { "name": "pap-menu-mano", "src": "pap", "x": 503, "y": 3802, "w": 717, "h": 284 },
+    { "name": "pap-menu-triptico", "src": "pap", "x": 54, "y": 4121, "w": 1166, "h": 390 },
+
+    { "name": "exp-hero", "src": "exp", "x": 26, "y": 113, "w": 1222, "h": 599 },
+    { "name": "exp-carrusel", "src": "exp", "x": 56, "y": 909, "w": 1162, "h": 362 },
+    { "name": "exp-grande", "src": "exp", "x": 478, "y": 1341, "w": 739, "h": 475 },
+    { "name": "exp-col-izq", "src": "exp", "x": 56, "y": 1744, "w": 397, "h": 1225 },
+    { "name": "exp-col-der", "src": "exp", "x": 478, "y": 1836, "w": 744, "h": 1133 },
+    { "name": "exp-mov-fotos", "src": "exp", "x": 45, "y": 3348, "w": 389, "h": 589 },
+    { "name": "exp-mov-medio", "src": "exp", "x": 474, "y": 3036, "w": 308, "h": 541 },
+    { "name": "exp-mov-der", "src": "exp", "x": 821, "y": 3036, "w": 400, "h": 901 },
+
+    { "name": "dig-hero", "src": "dig", "x": 26, "y": 113, "w": 1222, "h": 599 },
+    { "name": "dig-visionar-grilla", "src": "dig", "x": 56, "y": 1099, "w": 600, "h": 911 },
+    { "name": "dig-visionar-celu", "src": "dig", "x": 718, "y": 1020, "w": 500, "h": 1018 },
+    { "name": "dig-visionar-stories", "src": "dig", "x": 56, "y": 2090, "w": 1166, "h": 368 },
+    { "name": "dig-bebidas-celu-tope", "src": "dig", "x": 598, "y": 2555, "w": 364, "h": 234 },
+    { "name": "dig-bebidas-grilla", "src": "dig", "x": 55, "y": 2789, "w": 1165, "h": 1333 },
+    { "name": "dig-vinos", "src": "dig", "x": 55, "y": 2789, "w": 275, "h": 428 },
+    { "name": "dig-caterina-grilla", "src": "dig", "x": 62, "y": 4475, "w": 603, "h": 918 },
+    { "name": "dig-caterina-celu", "src": "dig", "x": 708, "y": 4373, "w": 500, "h": 1024 },
+    { "name": "dig-banner-mueblin", "src": "dig", "x": 59, "y": 5543, "w": 1160, "h": 505 },
+    { "name": "dig-banner-comardex", "src": "dig", "x": 59, "y": 6085, "w": 1160, "h": 506 },
+    { "name": "dig-reels", "src": "dig", "x": 728, "y": 6650, "w": 546, "h": 645 },
+    { "name": "dig-uikit", "src": "dig", "x": 640, "y": 7415, "w": 590, "h": 380 },
+    { "name": "dig-micrositio-1", "src": "dig", "x": 0, "y": 7998, "w": 1274, "h": 650 },
+    { "name": "dig-micrositio-2", "src": "dig", "x": 0, "y": 8833, "w": 1274, "h": 668 },
+
+    { "name": "pos-hero", "src": "pos", "x": 26, "y": 113, "w": 1222, "h": 599 },
+
+    { "name": "konex-1", "src": "po2", "x": 639, "y": 90, "w": 635, "h": 908 },
+    { "name": "konex-2", "src": "po2", "x": 639, "y": 997, "w": 635, "h": 908 },
+    { "name": "konex-3", "src": "po2", "x": 627, "y": 1905, "w": 647, "h": 447 },
+    { "name": "konex-4", "src": "po2", "x": 627, "y": 2352, "w": 647, "h": 461 },
+    { "name": "konex-5", "src": "po2", "x": 627, "y": 2813, "w": 647, "h": 255 },
+    { "name": "konex-6", "src": "po2", "x": 627, "y": 3068, "w": 647, "h": 639 },
+
+    { "name": "borges-1", "src": "po3", "x": 630, "y": 92, "w": 644, "h": 903 },
+    { "name": "borges-2", "src": "po3", "x": 630, "y": 995, "w": 644, "h": 909 },
+
+    { "name": "bestias-1", "src": "po4", "x": 632, "y": 90, "w": 642, "h": 902 },
+    { "name": "bestias-2", "src": "po4", "x": 0, "y": 990, "w": 1274, "h": 889 }
+  ]
+}
