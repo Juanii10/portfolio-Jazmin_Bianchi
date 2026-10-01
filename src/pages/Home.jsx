@@ -106,7 +106,7 @@ export default function Home() {
 
         <section className="proyectos lineas" id="proyectos">
           <h2 className="proyectos__titulo">Proyectos</h2>
-          <div className="proyectos__tarjetas">
+          <div className="tarjetas proyectos__tarjetas">
             <TarjetaProyecto to="/papeleria" imagen="pap-sefina" nombre="Papelería" />
             <TarjetaProyecto to="/experimentacion" imagen="exp-grande" nombre="Experimentación" posicion="30% 50%" />
             <TarjetaProyecto to="/diseno-digital" imagen="dig-vinos" nombre="Diseño digital" />

@@ -1,7 +1,7 @@
 /* Las medidas con sufijo "u" salen del frame de 1274px del diseño (ver vite.config.js). */
 
 :root {
-  --u: min(1px, calc(100cqw / 1274));
+  --u: min(2px, calc(100cqw / 1274));
   --crema: #fcfced;
   --oscuro: #181818;
   --negro: #000;
@@ -67,8 +67,6 @@ ul {
 .pagina {
   container-type: inline-size;
   width: 100%;
-  max-width: 1274px;
-  margin: 0 auto;
   background: var(--crema);
 }
 
@@ -333,7 +331,7 @@ ul {
   justify-content: space-between;
   align-items: center;
   height: 49u;
-  padding: 0 32u 0 97u;
+  padding: 0 85u 0 97u;
   border-top: 1px solid var(--linea);
   border-bottom: 1px solid var(--linea);
   font-size: 18u;
@@ -406,7 +404,7 @@ ul {
 .sobre__fila--datos {
   display: grid;
   grid-template-columns: 54u 335u 396u 1fr;
-  height: 298u;
+  min-height: 298u;
 }
 
 .sobre__fila--datos::before {
@@ -415,6 +413,7 @@ ul {
 
 .sobre__col {
   padding-top: 36u;
+  padding-bottom: 36u;
 }
 
 .sobre__col--educacion {
@@ -542,12 +541,15 @@ ul {
   color: var(--crema);
 }
 
-.proyectos__tarjetas {
-  display: grid;
-  grid-template-columns: repeat(4, 258u);
-  justify-content: center;
+.tarjetas {
+  display: flex;
   gap: 18u;
-  margin-top: 20u;
+}
+
+.proyectos__tarjetas {
+  width: 1086u;
+  height: 380u;
+  margin: 20u auto 0;
 }
 
 /* Tarjetas con imagen desenfocada (home e índice de posters) */
@@ -555,8 +557,11 @@ ul {
 .tarjeta {
   position: relative;
   display: block;
-  aspect-ratio: 258 / 380;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
   overflow: hidden;
+  transition: flex-grow 0.55s cubic-bezier(0.22, 1, 0.36, 1);
   border-radius: 10u;
   background: #000;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 18u rgba(255, 255, 255, 0.08);
@@ -580,7 +585,17 @@ ul {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.85) 100%);
 }
 
+.tarjetas:hover .tarjeta {
+  flex-grow: 0.85;
+}
+
+.tarjetas:hover .tarjeta:hover,
+.tarjetas:focus-within .tarjeta:focus-visible {
+  flex-grow: 2;
+}
+
 .tarjeta__nombre {
+  white-space: nowrap;
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -1046,11 +1061,14 @@ ul {
 /* ───────────── Posters ───────────── */
 
 .posters-indice {
-  display: grid;
-  grid-template-columns: repeat(3, 370u);
-  justify-content: center;
-  gap: 27u;
   padding: 57u 0 67u;
+}
+
+.posters-indice .tarjetas {
+  width: 1164u;
+  height: 545u;
+  gap: 27u;
+  margin: 0 auto;
 }
 
 .afiches {
@@ -1330,12 +1348,19 @@ ul {
     width: 100% !important;
   }
 
-  .posters-indice,
+  .posters-indice .tarjetas,
   .proyectos__tarjetas {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    padding-left: 22u;
-    padding-right: 22u;
+    width: auto;
+    height: auto;
+    margin: 20u 22u 0;
     gap: 14u;
+  }
+
+  .tarjeta {
+    height: auto;
+    aspect-ratio: 258 / 380;
   }
 
   .tarjeta__nombre {
