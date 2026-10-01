@@ -108,9 +108,9 @@ export default function Home() {
           <h2 className="proyectos__titulo">Proyectos</h2>
           <div className="tarjetas proyectos__tarjetas">
             <TarjetaProyecto to="/papeleria" imagen="pap-sefina" nombre="Papelería" />
-            <TarjetaProyecto to="/experimentacion" imagen="exp-grande" nombre="Experimentación" posicion="30% 50%" />
-            <TarjetaProyecto to="/diseno-digital" imagen="dig-vinos" nombre="Diseño digital" />
-            <TarjetaProyecto to="/posters" imagen="bestias-1" nombre="Posters" />
+            <TarjetaProyecto to="/experimentacion" imagen="exp-grande" nombre="Experimentación" />
+            <TarjetaProyecto to="/diseno-digital" imagen="card-digital" nombre="Diseño digital" />
+            <TarjetaProyecto to="/posters" imagen="bestias-2" nombre="Posters" />
           </div>
         </section>
       </main>
