@@ -2,3 +2,9 @@ node_modules
 dist
 _referencia
 .DS_Store
+
+# Tipografía con licencia (no se sube; ver public/fonts/LEEME.txt)
+public/fonts/*.otf
+public/fonts/*.ttf
+public/fonts/*.woff
+public/fonts/*.woff2

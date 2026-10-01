@@ -1,5 +1,25 @@
 /* Las medidas con sufijo "u" salen del frame de 1274px del diseño (ver vite.config.js). */
 
+/* Tipografías: títulos en Coolvetica (--display, sin tracking extra), todo lo demás en Helvetica (--texto).
+   Coolvetica no está en Google Fonts: el archivo va en public/fonts/ (ver public/fonts/LEEME.txt).
+   Tiene un solo peso, por eso los elementos con --display usan font-weight 400. */
+@font-face {
+  font-family: 'Coolvetica';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Coolvetica'), local('Coolvetica Rg'), url('/fonts/coolvetica.woff2') format('woff2'),
+    url('/fonts/coolvetica.otf') format('opentype'), url('/fonts/coolvetica.ttf') format('truetype');
+}
+
+/* Mientras falte el archivo de Coolvetica, los títulos caen a Helvetica/Arial en negrita. */
+@font-face {
+  font-family: 'Titulo reemplazo';
+  font-weight: 400;
+  src: local('Helvetica Neue Bold'), local('HelveticaNeue-Bold'), local('Helvetica Bold'), local('Helvetica-Bold'),
+    local('Arial Bold'), local('Arial-BoldMT'), local('Arimo Bold');
+}
+
 /* --u se resuelve una sola vez, contra el ancho de .pagina, y los contenedores internos (tarjetas)
    la heredan ya calculada. Por eso está registrada como <length>. */
 @property --u {
@@ -18,7 +38,7 @@
   --negro: #000;
   --rosa: #ff9bfe;
   --linea: rgba(252, 252, 237, 0.38);
-  --display: 'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --display: 'Coolvetica', 'Titulo reemplazo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --texto: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -185,10 +205,10 @@ ul {
 
 .proyecto__titulo {
   font-family: var(--display);
-  font-weight: 700;
-  font-size: 38u;
+  font-weight: 400;
+  font-size: 44u;
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   margin-bottom: 8u;
 }
 
@@ -212,9 +232,9 @@ ul {
   margin-top: 8u;
   color: var(--rosa);
   font-family: var(--display);
-  font-weight: 700;
-  font-size: 24u;
-  letter-spacing: -0.04em;
+  font-weight: 400;
+  font-size: 26u;
+  letter-spacing: 0;
 }
 
 .proyecto__texto strong {
@@ -267,10 +287,10 @@ ul {
 
 .footer__logo {
   font-family: var(--display);
-  font-weight: 700;
+  font-weight: 400;
   font-size: 78u;
   line-height: 0.9;
-  letter-spacing: -0.055em;
+  letter-spacing: 0;
   color: var(--crema);
 }
 
@@ -302,7 +322,7 @@ ul {
 }
 
 .contacto-lista {
-  font-family: 'Roboto', var(--texto);
+  font-family: var(--texto);
   font-size: 21u;
   line-height: 34u;
 }
@@ -327,8 +347,8 @@ ul {
   border-radius: 6u;
   background: var(--crema);
   color: var(--oscuro);
-  font: 800 17u var(--display);
-  letter-spacing: -0.05em;
+  font: 400 17u var(--display);
+  letter-spacing: 0;
 }
 
 .icono svg {
@@ -369,10 +389,10 @@ ul {
 
 .sobre h3 {
   font-family: var(--display);
-  font-weight: 700;
-  font-size: 30u;
+  font-weight: 400;
+  font-size: 31u;
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -393,11 +413,12 @@ ul {
   align-self: center;
   padding-left: 78u;
   font-family: var(--display);
-  font-weight: 700;
-  font-size: 92u;
+  font-weight: 400;
+  font-size: 89u;
   line-height: 1;
-  letter-spacing: -0.06em;
+  letter-spacing: 0;
   white-space: nowrap;
+  word-spacing: 0.1em;
 }
 
 .sobre__intro {
@@ -453,10 +474,10 @@ ul {
 .sobre__col--educacion .dato strong {
   display: block;
   font-family: var(--display);
-  font-weight: 700;
-  font-size: 17u;
+  font-weight: 400;
+  font-size: 19u;
   line-height: 1.05;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -511,10 +532,10 @@ ul {
 
 .experiencia h4 {
   font-family: var(--display);
-  font-weight: 700;
-  font-size: 18u;
+  font-weight: 400;
+  font-size: 19u;
   line-height: 1.1;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -545,10 +566,10 @@ ul {
   padding-top: 14u;
   text-align: center;
   font-family: var(--display);
-  font-weight: 700;
-  font-size: 204u;
+  font-weight: 400;
+  font-size: 207u;
   line-height: 1.05;
-  letter-spacing: -0.065em;
+  letter-spacing: 0;
   color: var(--crema);
 }
 
@@ -615,9 +636,9 @@ ul {
   display: grid;
   place-items: center;
   font-family: var(--display);
-  font-weight: 700;
+  font-weight: 400;
   font-size: min(27u, 10.5cqw);
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--crema);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 2px 14u rgba(0, 0, 0, 0.85), 0 0 28u rgba(0, 0, 0, 0.7);
@@ -876,9 +897,9 @@ ul {
 
 .frase h3 {
   font-family: var(--display);
-  font-weight: 700;
-  font-size: 21u;
-  letter-spacing: -0.04em;
+  font-weight: 400;
+  font-size: 24u;
+  letter-spacing: 0;
   margin-bottom: 4u;
 }
 
@@ -1097,9 +1118,9 @@ ul {
   left: 59u;
   color: var(--rosa);
   font-family: var(--display);
-  font-weight: 700;
-  font-size: 24u;
-  letter-spacing: -0.04em;
+  font-weight: 400;
+  font-size: 26u;
+  letter-spacing: 0;
 }
 
 .afiche {
