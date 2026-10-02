@@ -372,13 +372,166 @@ ul {
 
 /* ───────────── Home ───────────── */
 
-.home-hero img,
 .home-frase img {
   width: 100%;
 }
 
+/* Hero del home: capas reales sobre el frame de 1274 x 631 del diseño. */
 .home-hero {
+  position: relative;
+  height: 631u;
   background: var(--oscuro);
+  overflow: hidden;
+  /* La composición escala siempre con el ancho (también en celular), como la imagen original. */
+  --u: min(2px, calc(100cqw / 1274));
+}
+
+.hero-nombre {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 206.5u;
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+  color: var(--crema);
+}
+
+.hero-nombre--contorno {
+  z-index: 4;
+  color: transparent;
+  -webkit-text-stroke: 1.8u var(--crema);
+}
+
+.hero-nombre__linea {
+  position: absolute;
+}
+
+.hero-nombre__linea--1 {
+  left: 180u;
+  top: 122u;
+}
+
+.hero-nombre__linea--2 {
+  left: 507u;
+  top: 285u;
+}
+
+.foto {
+  position: absolute;
+  z-index: 3;
+  margin: 0;
+  /* Aparece con un fundido, una foto después de otra: oculta durante `--retraso` segundos
+     (fill backwards) y al terminar la animación queda en su opacidad normal. */
+  animation: foto-aparece 0.45s ease-out var(--retraso, 0s) backwards;
+}
+
+.foto__marco {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: scale 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.foto__marco img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+
+/* La foto bajo el mouse se agranda. */
+.foto:hover .foto__marco {
+  scale: 1.07;
+}
+
+.foto__etiqueta {
+  position: absolute;
+  padding: 0 8u;
+  background: var(--rosa);
+  color: #000;
+  font: 17.3u/24u var(--texto);
+  white-space: nowrap;
+}
+
+.foto--camino {
+  left: 78u;
+  top: 53u;
+  width: 290u;
+  height: 218u;
+}
+
+.foto--mariposa {
+  left: 570u;
+  top: 51u;
+  width: 257u;
+  height: 186u;
+}
+
+.foto--uade {
+  left: 890u;
+  top: 110u;
+  width: 291u;
+  height: 223u;
+}
+
+.foto--uade .foto__etiqueta {
+  left: 1u;
+  top: -34u;
+}
+
+.foto--tortuga {
+  left: 80u;
+  top: 350u;
+  width: 291u;
+  height: 190u;
+}
+
+.foto--tortuga img {
+  object-position: 50% 62%;
+}
+
+.foto--tortuga .foto__etiqueta {
+  right: 2u;
+  top: 204u;
+}
+
+.foto--nieve {
+  left: 450u;
+  top: 392u;
+  width: 291u;
+  height: 188u;
+}
+
+.foto--nieve img {
+  object-position: 50% 40%;
+}
+
+.foto--retrato {
+  left: 892u;
+  top: 419u;
+  width: 291u;
+  height: 189u;
+}
+
+@keyframes foto-aparece {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .foto {
+    animation: none;
+  }
+
+  .foto__marco {
+    transition: none;
+  }
 }
 
 .sobre {

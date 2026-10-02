@@ -1,6 +1,7 @@
 import Nav from '../components/Nav.jsx'
 import Footer, { Contacto, Sociales } from '../components/Footer.jsx'
 import Img from '../components/Img.jsx'
+import HeroHome from '../components/HeroHome.jsx'
 import TarjetaProyecto from '../components/TarjetaProyecto.jsx'
 
 export default function Home() {
@@ -8,10 +9,7 @@ export default function Home() {
     <div className="pagina">
       <Nav conContacto={false} compacto />
       <main>
-        <section className="home-hero">
-          <Img name="home-hero" alt="Jazmín Bianchi — Diseño Gráfico — Portfolio 2026" eager />
-          <h1 className="sr-only">Jazmín Bianchi, diseño gráfico. Portfolio 2026</h1>
-        </section>
+        <HeroHome />
 
         <section className="home-frase">
           <Img name="home-quote" alt="" />
