@@ -17,7 +17,7 @@ export default function Papeleria() {
       <Nav />
       <main>
         <div className="marco-hero">
-          <Hero imagen="pap-hero" titulo="Papelería — Mi lugar favorito" flecha={[50, 80]} />
+          <Hero imagen="pap-hero" titulo="Papelería — Mi lugar favorito" flecha={[49.98, 80.09]} />
         </div>
 
         <div id="contenido">
@@ -53,7 +53,7 @@ export default function Papeleria() {
 
           <section className="sec sec--oscura pap-fiore">
             <div className="split split--fiore">
-              <Proyecto cliente="Fiore Banfied" fecha="Octubre 2026">
+              <Proyecto cliente="Fiore Banfield" fecha="Octubre 2026">
                 <p>
                   Desarrollo de una serie gráfica explorando el vínculo entre color, tipografía y composición. La
                   propuesta construye un lenguaje visual cálido y expresivo, donde cada pieza mantiene una
@@ -70,11 +70,11 @@ export default function Papeleria() {
             </div>
           </section>
 
-          <Img className="a-ancho" name="pap-fiore-tarjetas" alt="Cuatro tarjetas de mesa Fiore Banfied para el día de la madre" />
+          <Img className="a-ancho" name="pap-fiore-tarjetas" alt="Cuatro tarjetas de mesa Fiore Banfield para el día de la madre" />
 
           <section className="sec sec--crema pap-sefina">
             <Img name="pap-sefina" alt="Tarjetón «Gracias por elegirnos» de San Valentín sobre un sillón" />
-            <Proyecto cliente="Fiore Banfied" fecha="Febrero 2026">
+            <Proyecto cliente="Sefina Home" fecha="Febrero 2026">
               <p>
                 Una propuesta pensada para celebrar el amor desde la dulzura. Diseñé un tarjetón de san valentín
                 donde se refleja la esencia de la marca creando una pieza que acompaña el momento y suman un

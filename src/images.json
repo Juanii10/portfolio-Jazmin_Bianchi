@@ -1,186 +1,182 @@
-﻿{
-    "home-hero":  {
-                      "h":  631,
-                      "w":  1274
-                  },
-    "home-quote":  {
-                       "h":  750,
-                       "w":  1274
-                   },
-    "pap-hero":  {
-                     "h":  1198,
-                     "w":  2444
-                 },
-    "pap-raptor":  {
-                       "h":  400,
-                       "w":  1400
-                   },
-    "pap-raptor-fotos":  {
-                             "h":  508,
-                             "w":  2354
-                         },
-    "pap-tarjetones":  {
-                           "h":  1446,
-                           "w":  1668
-                       },
-    "pap-tarjetones-mock":  {
-                                "h":  446,
-                                "w":  666
-                            },
-    "pap-fiore-tarjetas":  {
-                               "h":  1234,
-                               "w":  2548
-                           },
-    "pap-sefina":  {
-                       "h":  1198,
-                       "w":  1724
-                   },
-    "pap-menu-mano":  {
-                          "h":  568,
-                          "w":  1434
-                      },
-    "pap-menu-triptico":  {
-                              "h":  780,
-                              "w":  2332
-                          },
-    "exp-hero":  {
-                     "h":  1198,
-                     "w":  2444
-                 },
-    "exp-carrusel":  {
-                         "h":  724,
-                         "w":  2324
-                     },
-    "exp-grande":  {
-                       "h":  950,
-                       "w":  1478
-                   },
-    "exp-col-izq":  {
-                        "h":  2450,
-                        "w":  794
-                    },
-    "exp-col-der":  {
-                        "h":  2266,
-                        "w":  1488
-                    },
-    "exp-mov-fotos":  {
-                          "h":  1178,
-                          "w":  778
-                      },
-    "exp-mov-medio":  {
-                          "h":  1082,
-                          "w":  616
-                      },
-    "exp-mov-der":  {
-                        "h":  1802,
-                        "w":  800
-                    },
-    "dig-hero":  {
-                     "h":  1198,
-                     "w":  2444
-                 },
-    "dig-visionar-grilla":  {
-                                "h":  1822,
-                                "w":  1200
-                            },
-    "dig-visionar-celu":  {
-                              "h":  2036,
-                              "w":  1000
-                          },
-    "dig-visionar-stories":  {
-                                 "h":  736,
-                                 "w":  2332
-                             },
-    "dig-bebidas-celu-tope":  {
-                                  "h":  468,
-                                  "w":  728
-                              },
-    "dig-bebidas-grilla":  {
-                               "h":  2666,
-                               "w":  2330
-                           },
-    "dig-vinos":  {
-                      "h":  816,
-                      "w":  514
-                  },
-    "dig-caterina-grilla":  {
-                                "h":  1836,
-                                "w":  1206
-                            },
-    "dig-caterina-celu":  {
-                              "h":  2048,
-                              "w":  1000
-                          },
-    "dig-banner-mueblin":  {
-                               "h":  1010,
-                               "w":  2320
-                           },
-    "dig-banner-comardex":  {
-                                "h":  1012,
-                                "w":  2320
-                            },
-    "dig-reels":  {
-                      "h":  1290,
-                      "w":  1092
-                  },
-    "dig-uikit":  {
-                      "h":  760,
-                      "w":  1180
-                  },
-    "dig-micrositio-1":  {
-                             "h":  1300,
-                             "w":  2548
-                         },
-    "dig-micrositio-2":  {
-                             "h":  1336,
-                             "w":  2548
-                         },
-    "pos-hero":  {
-                     "h":  1198,
-                     "w":  2444
-                 },
-    "konex-1":  {
-                    "h":  1816,
-                    "w":  1270
-                },
-    "konex-2":  {
-                    "h":  1816,
-                    "w":  1270
-                },
-    "konex-3":  {
-                    "h":  894,
-                    "w":  1294
-                },
-    "konex-4":  {
-                    "h":  922,
-                    "w":  1294
-                },
-    "konex-5":  {
-                    "h":  510,
-                    "w":  1294
-                },
-    "konex-6":  {
-                    "h":  1278,
-                    "w":  1294
-                },
-    "borges-1":  {
-                     "h":  1806,
-                     "w":  1288
-                 },
-    "borges-2":  {
-                     "h":  1818,
-                     "w":  1288
-                 },
-    "bestias-1":  {
-                      "h":  1804,
-                      "w":  1284
-                  },
-    "bestias-2":  {
-                      "h":  1778,
-                      "w":  2548
-                  },
-    "card-digital":  {
-                         "h":  816,
-                         "w":  1183
-                     }
+{
+  "home-hero": {
+    "h": 631,
+    "w": 1274
+  },
+  "home-quote": {
+    "h": 750,
+    "w": 1274
+  },
+  "pap-hero": {
+    "h": 1198,
+    "w": 2444
+  },
+  "pap-raptor": {
+    "h": 400,
+    "w": 1400
+  },
+  "pap-raptor-fotos": {
+    "h": 508,
+    "w": 2354
+  },
+  "pap-tarjetones": {
+    "h": 1446,
+    "w": 1668
+  },
+  "pap-tarjetones-mock": {
+    "h": 446,
+    "w": 666
+  },
+  "pap-fiore-tarjetas": {
+    "h": 1234,
+    "w": 2548
+  },
+  "pap-sefina": {
+    "h": 1198,
+    "w": 1724
+  },
+  "pap-menu-mano": {
+    "h": 568,
+    "w": 1434
+  },
+  "pap-menu-triptico": {
+    "h": 780,
+    "w": 2332
+  },
+  "exp-hero": {
+    "h": 1198,
+    "w": 2444
+  },
+  "exp-grande": {
+    "h": 950,
+    "w": 1478
+  },
+  "exp-col-izq": {
+    "h": 2450,
+    "w": 794
+  },
+  "exp-col-der": {
+    "h": 2266,
+    "w": 1488
+  },
+  "exp-mov-fotos": {
+    "h": 1178,
+    "w": 778
+  },
+  "exp-mov-medio": {
+    "h": 1082,
+    "w": 616
+  },
+  "exp-mov-der": {
+    "h": 1802,
+    "w": 800
+  },
+  "dig-hero": {
+    "h": 1198,
+    "w": 2444
+  },
+  "dig-visionar-grilla": {
+    "h": 1822,
+    "w": 1200
+  },
+  "dig-visionar-celu": {
+    "h": 2036,
+    "w": 1000
+  },
+  "dig-visionar-stories": {
+    "h": 736,
+    "w": 2332
+  },
+  "dig-bebidas-celu-tope": {
+    "h": 468,
+    "w": 728
+  },
+  "dig-bebidas-grilla": {
+    "h": 2666,
+    "w": 2330
+  },
+  "dig-vinos": {
+    "h": 816,
+    "w": 514
+  },
+  "dig-caterina-grilla": {
+    "h": 1836,
+    "w": 1206
+  },
+  "dig-caterina-celu": {
+    "h": 2048,
+    "w": 1000
+  },
+  "dig-banner-mueblin": {
+    "h": 1010,
+    "w": 2320
+  },
+  "dig-banner-comardex": {
+    "h": 1012,
+    "w": 2320
+  },
+  "dig-reels": {
+    "h": 1290,
+    "w": 1092
+  },
+  "dig-uikit": {
+    "h": 760,
+    "w": 1180
+  },
+  "dig-micrositio-1": {
+    "h": 1300,
+    "w": 2548
+  },
+  "dig-micrositio-2": {
+    "h": 1336,
+    "w": 2548
+  },
+  "pos-hero": {
+    "h": 1198,
+    "w": 2444
+  },
+  "konex-1": {
+    "h": 1816,
+    "w": 1270
+  },
+  "konex-2": {
+    "h": 1816,
+    "w": 1270
+  },
+  "konex-3": {
+    "h": 894,
+    "w": 1294
+  },
+  "konex-4": {
+    "h": 922,
+    "w": 1294
+  },
+  "konex-5": {
+    "h": 510,
+    "w": 1294
+  },
+  "konex-6": {
+    "h": 1278,
+    "w": 1294
+  },
+  "borges-1": {
+    "h": 1806,
+    "w": 1288
+  },
+  "borges-2": {
+    "h": 1818,
+    "w": 1288
+  },
+  "bestias-1": {
+    "h": 1804,
+    "w": 1284
+  },
+  "bestias-2": {
+    "h": 1778,
+    "w": 2548
+  },
+  "card-digital": {
+    "h": 816,
+    "w": 1183
+  }
 }

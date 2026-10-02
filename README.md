@@ -14,6 +14,8 @@ npm run build    # producción en /dist
 ## Imágenes
 El diseño se entregó como PNG planos, así que las imágenes se **recortan** de esos exports:
 `tools/crops.json` define cada recorte y `npm run imagenes` los regenera en `public/img/` (los PNG originales van en `_referencia/`, que no se versiona).
+
+Después de regenerar, correr `python tools/alinear_iconos.py` para volver a alinear la grilla de íconos del UI Kit (`dig-uikit.jpg`), que en el diseño original está desprolija.
 Cuando haya fotos originales, se reemplaza el JPG correspondiente en `public/img/` con el mismo nombre.
 
 ## Escala

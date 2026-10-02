@@ -3,6 +3,7 @@ import Footer from '../components/Footer.jsx'
 import Hero from '../components/Hero.jsx'
 import Img from '../components/Img.jsx'
 import Proyecto from '../components/Proyecto.jsx'
+import SliderExperimentacion from '../components/SliderExperimentacion.jsx'
 
 export default function Experimentacion() {
   return (
@@ -10,7 +11,7 @@ export default function Experimentacion() {
       <Nav />
       <main>
         <div className="marco-hero">
-          <Hero imagen="exp-hero" titulo="Experimentación — Donde me dejo ser" flecha={[50, 67]} />
+          <Hero imagen="exp-hero" titulo="Experimentación — Donde me dejo ser" flecha={[50.06, 66.74]} />
         </div>
 
         <div id="contenido">
@@ -19,7 +20,7 @@ export default function Experimentacion() {
               <h2 className="proyecto__titulo">[[ Entre palabras</h2>
               <p className="exp-palabras__sub">El proceso como parte fundamental del diseño</p>
             </div>
-            <Img className="a-ancho" name="exp-carrusel" alt="Composiciones con la palabra «sentido» hechas con recortes de letras" />
+            <SliderExperimentacion />
 
             <div className="exp-mosaico">
               <div className="exp-mosaico__izq">

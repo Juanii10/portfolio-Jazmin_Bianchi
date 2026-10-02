@@ -4,18 +4,31 @@ import Hero from '../components/Hero.jsx'
 import Img from '../components/Img.jsx'
 import Proyecto from '../components/Proyecto.jsx'
 
+// Botones dibujados en la parte de arriba de la imagen del hero (caja en px de la imagen de 2444 x 1198).
+const ENLACES = [
+  { etiqueta: 'Piezas para redes', href: '#piezas-para-redes', caja: [173, 107, 567, 173] },
+  { etiqueta: 'Banners Web', href: '#banners-web', caja: [789, 107, 1183, 173] },
+  { etiqueta: 'Edición de reels', href: '#edicion-de-reels', caja: [1365, 107, 1758, 173] },
+  { etiqueta: 'Diseño web', href: '#diseno-web', caja: [1935, 107, 2328, 173] },
+]
+
 export default function DisenoDigital() {
   return (
     <div className="pagina">
       <Nav />
       <main>
         <div className="marco-hero">
-          <Hero imagen="dig-hero" titulo="Diseño digital — Donde pienso, creo y resuelvo" flecha={[50, 85.5]} />
+          <Hero
+            imagen="dig-hero"
+            titulo="Diseño digital — Donde pienso, creo y resuelvo"
+            flecha={[49.98, 85.64]}
+            enlaces={ENLACES}
+          />
         </div>
 
         <div id="contenido">
           {/* Piezas para redes */}
-          <section className="sec sec--negra dig-redes">
+          <section className="sec sec--negra dig-redes" id="piezas-para-redes">
             <h2 className="proyecto__titulo dig-redes__titulo">[[ Piezas para redes</h2>
             <div className="dig-redes__grid">
               <Proyecto cliente="Visionar Coaching" fecha="Abril 2025 - Actualidad" className="dig-texto">
@@ -59,12 +72,12 @@ export default function DisenoDigital() {
               <Img className="dig-redes__celu" name="dig-caterina-celu" alt="Perfil de Instagram caterina.beautystudio en un celular" />
             </div>
 
-            <h2 className="proyecto__titulo dig-banner__titulo">[[ Banner Web</h2>
+            <h2 className="proyecto__titulo dig-banner__titulo" id="banners-web">[[ Banner Web</h2>
             <Img className="a-ancho dig-banner" name="dig-banner-mueblin" alt="Mueblin Hogar 2025: banner web «¡El estilo de tu hogar lo podés encontrar aquí!» en notebook y celular" />
             <Img className="a-ancho dig-banner dig-banner--2" name="dig-banner-comardex" alt="Comardex 2025: banner web «Productos 100% originales»" />
           </section>
 
-          <section className="sec sec--negra dig-reels">
+          <section className="sec sec--negra dig-reels" id="edicion-de-reels">
             <div className="dig-reels__texto">
               <Proyecto titulo="Edición de reels" cliente="Cuan Arquitectura" fecha="Julio 2025 - Actualidad">
                 <p>
@@ -78,7 +91,7 @@ export default function DisenoDigital() {
           </section>
 
           {/* Diseño web */}
-          <section className="sec sec--crema dig-web">
+          <section className="sec sec--crema dig-web" id="diseno-web">
             <div className="dig-web__cabecera">
               <Proyecto titulo="Diseño web" cliente="Sabores + Esquinas" fecha="Julio 2024">
                 <p>

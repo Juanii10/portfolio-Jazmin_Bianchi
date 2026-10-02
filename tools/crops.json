@@ -24,7 +24,6 @@
     { "name": "pap-menu-triptico", "src": "pap", "x": 54, "y": 4121, "w": 1166, "h": 390 },
 
     { "name": "exp-hero", "src": "exp", "x": 26, "y": 113, "w": 1222, "h": 599 },
-    { "name": "exp-carrusel", "src": "exp", "x": 56, "y": 909, "w": 1162, "h": 362 },
     { "name": "exp-grande", "src": "exp", "x": 478, "y": 1341, "w": 739, "h": 475 },
     { "name": "exp-col-izq", "src": "exp", "x": 56, "y": 1744, "w": 397, "h": 1225 },
     { "name": "exp-col-der", "src": "exp", "x": 478, "y": 1836, "w": 744, "h": 1133 },

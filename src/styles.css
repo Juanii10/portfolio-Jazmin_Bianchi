@@ -120,14 +120,10 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 113u;
+  height: 60u;
   padding: 0 55u 0 73u;
   background: var(--crema);
   color: #111;
-}
-
-.nav--compacto {
-  height: 90u;
 }
 
 .nav__links {
@@ -167,18 +163,31 @@ ul {
   width: 100%;
 }
 
+/* Mismo diámetro que el círculo del botón dibujado en la imagen (40 de 1222), así el aro del hover
+   queda concéntrico. El centro exacto de cada imagen se pasa en `flecha` (ver las páginas). */
 .hero__flecha {
   position: absolute;
-  width: 46u;
-  height: 46u;
+  width: 3.273%;
+  aspect-ratio: 1;
   border-radius: 50%;
   transform: translate(-50%, -50%);
+}
+
+.hero__enlace {
+  position: absolute;
+  border-radius: 999px;
+}
+
+.hero__enlace:hover,
+.hero__enlace:focus-visible {
+  outline: 2px solid var(--crema);
+  outline-offset: 3px;
 }
 
 .hero__flecha:hover,
 .hero__flecha:focus-visible {
   outline: 2px solid var(--rosa);
-  outline-offset: 2u;
+  outline-offset: 4px;
 }
 
 /* ───────────── Bloques de texto de proyecto ───────────── */
@@ -940,17 +949,172 @@ ul {
   line-height: 1.2;
 }
 
-.exp-palabras > .a-ancho {
-  width: 1162u;
+/* Slider estilo Glide.js: foto central de 813 x 361 con las vecinas asomando a los costados,
+   giradas en perspectiva hacia el centro. Al moverse, cada foto interpola ese giro, que es lo que
+   da la inclinación durante la transición. */
+.exp-slider {
+  position: relative;
+  /* Tamaño de la foto central: todo el resto del slider se calcula a partir de acá. */
+  --w: 813u;
+  --h: 361u;
+  width: 100%;
+  height: calc(var(--h) + 30u);
+  margin-top: 29u;
+  overflow: hidden;
+  perspective: 1300u;
+  perspective-origin: 50% 50%;
+  outline-offset: -4px;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.exp-slider__foto {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--w);
+  height: var(--h);
+  margin: 0 0 0 calc(var(--w) / -2);
+  overflow: hidden;
+  border-radius: 10u;
+  background: #fff;
+  transition: transform 0.75s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.75s ease;
+}
+
+.exp-slider__foto img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
   max-width: none;
-  margin: 29u 0 0 56u;
+}
+
+/* La foto se ve entera (sin recortar ni hacer zoom) sobre el fondo blanco del marco. */
+.exp-slider__foto img {
+  object-fit: contain;
+}
+
+.exp-slider__foto--centro {
+  z-index: 3;
+}
+
+.exp-slider__foto--izq,
+.exp-slider__foto--fuera-izq {
+  z-index: 2;
+  transform: translateX(calc(var(--w) * -1.016)) rotateY(24deg) scale(0.94);
+}
+
+.exp-slider__foto--der,
+.exp-slider__foto--fuera-der {
+  z-index: 2;
+  transform: translateX(calc(var(--w) * 1.016)) rotateY(-24deg) scale(0.94);
+}
+
+.exp-slider__foto--izq,
+.exp-slider__foto--der {
+  cursor: pointer;
+}
+
+.exp-slider__foto--fuera-izq,
+.exp-slider__foto--fuera-der {
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.exp-slider__puntos {
+  position: absolute;
+  z-index: 5;
+  bottom: 4u;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 12u;
+}
+
+.exp-slider__puntos button {
+  width: 9u;
+  height: 9u;
+  min-width: 7px;
+  min-height: 7px;
+  padding: 0;
+  border: 1px solid var(--crema);
+  border-radius: 50%;
+  background: transparent;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+}
+
+.exp-slider__puntos button.activo {
+  border-color: var(--rosa);
+  background: var(--rosa);
+  opacity: 1;
+}
+
+.exp-slider__puntos button:focus-visible {
+  outline: 2px solid var(--rosa);
+  outline-offset: 2px;
+}
+
+.exp-slider__flecha {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  width: 60u;
+  height: 60u;
+  min-width: 34px;
+  min-height: 34px;
+  margin-top: -30u;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #000;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.exp-slider__flecha:hover {
+  transform: scale(1.08);
+}
+
+.exp-slider__flecha:focus-visible {
+  outline: 2px solid var(--rosa);
+  outline-offset: 3px;
+}
+
+.exp-slider__flecha--izq {
+  left: calc(50% - var(--w) / 2 - 30u);
+}
+
+.exp-slider__flecha--der {
+  left: calc(50% + var(--w) / 2 - 30u);
+}
+
+.exp-slider__flecha svg {
+  width: 40%;
+  height: 40%;
+  fill: none;
+  stroke: var(--crema);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exp-slider__foto,
+  .exp-slider__flecha {
+    transition: none;
+  }
 }
 
 .exp-mosaico {
   display: grid;
   grid-template-columns: 397u 744u;
   column-gap: 25u;
-  padding: 29u 0 0 56u;
+  padding: 0 0 0 56u;
   background: linear-gradient(180deg, #000 0, #161616 130u, #000 640u);
 }
 
@@ -960,19 +1124,35 @@ ul {
 }
 
 .exp-mosaico__izq {
+  display: flex;
+  flex-direction: column;
   padding-top: 69u;
 }
 
+/* La imagen de la izquierda se apoya abajo para terminar a la misma altura que la de la derecha. */
 .exp-mosaico__izq img {
   width: 397u;
+  margin-top: auto;
 }
 
 .exp-mosaico__der img {
   width: 744u;
 }
 
+.exp-movimiento__izq {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Las tres columnas terminan a la misma altura: la foto de la izquierda se apoya abajo
+   y el recuadro rosa del medio se estira hasta el final. */
 .exp-movimiento__izq img {
   width: 389u;
+  margin-top: auto;
+}
+
+.exp-movimiento__medio .frase {
+  flex: 1;
 }
 
 .exp-movimiento__medio img {
@@ -1012,7 +1192,7 @@ ul {
   display: grid;
   grid-template-columns: 389u 308u 400u;
   column-gap: 41u;
-  align-items: start;
+  align-items: stretch;
 }
 
 .exp-movimiento__medio {
@@ -1023,7 +1203,7 @@ ul {
 }
 
 .exp-movimiento__izq .proyecto {
-  margin: 0 0 58u 15u;
+  margin: 0 0 30u 15u;
 }
 
 .exp-movimiento__izq .proyecto__texto {
@@ -1358,11 +1538,6 @@ ul {
     padding: 0 10u 10u;
   }
 
-  .hero__flecha {
-    width: 36u;
-    height: 36u;
-  }
-
   img {
     max-width: 100% !important;
     height: auto;
@@ -1445,9 +1620,9 @@ ul {
     margin-left: 0;
   }
 
-  .exp-palabras > .a-ancho {
-    width: calc(100% - 20u) !important;
-    margin: 20u 10u 0 !important;
+  .exp-slider {
+    --u: min(2px, calc(100cqw / 1274));
+    margin-top: 20px;
   }
 
   .exp-mosaico__izq,
