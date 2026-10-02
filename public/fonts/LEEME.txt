@@ -4,6 +4,9 @@ Poné acá el archivo de la tipografía Coolvetica con alguno de estos nombres:
   coolvetica.otf
   coolvetica.ttf
 
+Y para la firma en cursiva del home ("Jazmín"): coolvetica-italic.woff2 / .otf / .ttf
+(la variante "Coolvetica Rg It"). Sin ese archivo se ve una cursiva simulada.
+
 El CSS (src/styles.css, @font-face) los busca en ese orden. Coolvetica no está en Google Fonts
 y su licencia gratuita es solo para uso personal: para un portfolio profesional conviene la licencia comercial.
 Mientras el archivo no esté, los títulos usan Helvetica como reemplazo.

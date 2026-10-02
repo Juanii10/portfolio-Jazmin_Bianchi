@@ -11,13 +11,23 @@ export default function Home() {
       <main>
         <HeroHome />
 
-        <section className="home-frase">
-          <Img name="home-quote" alt="" />
-          <p className="sr-only">
-            Soy amor, soy pasión, soy libertad, soy creadora. Soy amiga, soy persona, soy pensadora, soy
-            independiente, soy calma y también fuego. Soy diseñadora, y lo llevo en el alma. En el corazón,
-            a donde sea que voy. Soy todo eso, y todo eso hace que sea yo. Jazmín.
-          </p>
+        <section className="home-frase lineas">
+          <img className="home-frase__fondo" src={`${import.meta.env.BASE_URL}img/home-frase.jpg`} alt="" width="1600" height="892" loading="lazy" decoding="async" />
+          <div className="home-frase__borde" aria-hidden="true" />
+          <div className="home-frase__texto">
+            <p>
+              Soy amor, soy pasión, soy libertad,{' '}<br className="salto" />
+              <span className="rosa">[soy creadora].</span> soy amiga, soy persona,{' '}<br className="salto" />
+              soy pensadora, soy independiente, soy{' '}<br className="salto" />
+              calma y también fuego.
+            </p>
+            <p>
+              Soy diseñadora, <span className="rosa">[y lo llevo en el alma].</span> En{' '}<br className="salto" />
+              el corazón, a donde sea que voy.
+            </p>
+            <p>Soy todo eso, y todo eso hace que sea yo.</p>
+            <p className="home-frase__firma">Jazmín</p>
+          </div>
         </section>
 
         <section className="sobre lineas" id="sobre-jaz">

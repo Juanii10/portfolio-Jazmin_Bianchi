@@ -11,7 +11,6 @@
   },
   "crops": [
     { "name": "home-hero", "src": "main", "x": 0, "y": 92, "w": 1274, "h": 631 },
-    { "name": "home-quote", "src": "main", "x": 0, "y": 723, "w": 1274, "h": 750 },
 
     { "name": "pap-hero", "src": "pap", "x": 26, "y": 113, "w": 1222, "h": 599 },
     { "name": "pap-raptor", "src": "pap", "x": 520, "y": 832, "w": 700, "h": 200 },

@@ -32,28 +32,12 @@ foreach ($c in $cfg.crops) {
 }
 foreach ($b in $bitmaps.Values) { $b.Dispose() }
 
-# card-digital: el post "Cata de vinos" (vertical) centrado en un lienzo apaisado; los costados se rellenan
-# con el mismo post agrandado y difuminado. Así la tarjeta de Diseño digital muestra más imagen al
-# ensancharse, igual que las otras, en vez de hacer zoom.
-$vinos = [Drawing.Bitmap]::FromFile((Join-Path $out 'dig-vinos.jpg'))
-$ch = $vinos.Height
-$cw = [int]($ch * 1.45)
-$canvas = New-Object Drawing.Bitmap $cw, $ch
-$g = [Drawing.Graphics]::FromImage($canvas)
-$g.InterpolationMode = 'HighQualityBicubic'
-$tiny = New-Object Drawing.Bitmap 24, ([int](24 * $ch / $cw))
-$gt = [Drawing.Graphics]::FromImage($tiny)
-$gt.InterpolationMode = 'HighQualityBicubic'
-$scale = $cw / $vinos.Width
-$srcH = [int]($tiny.Height * $vinos.Width / $tiny.Width)
-$gt.DrawImage($vinos, (New-Object Drawing.Rectangle 0, 0, $tiny.Width, $tiny.Height), 0, [int](($vinos.Height - $srcH) / 2), $vinos.Width, $srcH, [Drawing.GraphicsUnit]::Pixel)
-$gt.Dispose()
-$g.DrawImage($tiny, 0, 0, $cw, $ch)
-$g.FillRectangle((New-Object Drawing.SolidBrush ([Drawing.Color]::FromArgb(90, 0, 0, 0))), 0, 0, $cw, $ch)
-$g.DrawImage($vinos, [int](($cw - $vinos.Width) / 2), 0, $vinos.Width, $vinos.Height)
-$g.Dispose(); $tiny.Dispose(); $vinos.Dispose()
-$canvas.Save((Join-Path $out 'card-digital.jpg'), $jpeg, $params)
-$sizes['card-digital'] = @{ w = $cw; h = $ch }
-$canvas.Dispose()
+# card-digital: foto apaisada de Comardex (tools/originales/comardex.jpg), igual que usa el banner web.
+# Al ser apaisada, la tarjeta de Diseño digital muestra más imagen al ensancharse (sin hacer zoom).
+$cardOrigen = Join-Path $root 'tools\originales\comardex.jpg'
+Copy-Item $cardOrigen (Join-Path $out 'card-digital.jpg') -Force
+$card = [Drawing.Bitmap]::FromFile($cardOrigen)
+$sizes['card-digital'] = @{ w = $card.Width; h = $card.Height }
+$card.Dispose()
 $sizes | ConvertTo-Json | Set-Content (Join-Path $root 'src\images.json') -Encoding UTF8
 "OK: $($sizes.Count) imágenes"

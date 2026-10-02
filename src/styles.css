@@ -12,6 +12,15 @@
     url('/fonts/coolvetica.otf') format('opentype'), url('/fonts/coolvetica.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Coolvetica';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Coolvetica Rg It'), local('Coolvetica Italic'), url('/fonts/coolvetica-italic.woff2') format('woff2'),
+    url('/fonts/coolvetica-italic.otf') format('opentype'), url('/fonts/coolvetica-italic.ttf') format('truetype');
+}
+
 /* Mientras falte el archivo de Coolvetica, los títulos caen a Helvetica/Arial en negrita. */
 @font-face {
   font-family: 'Titulo reemplazo';
@@ -381,8 +390,67 @@ ul {
 
 /* ───────────── Home ───────────── */
 
-.home-frase img {
+/* Frase del home: foto del atardecer de fondo y texto real encima (antes venía dentro de la imagen). */
+.home-frase {
+  position: relative;
+  height: 750u;
+  overflow: hidden;
+  background: #171214;
+  color: var(--crema);
+}
+
+.home-frase__fondo {
+  position: absolute;
+  top: 38u;
+  left: 0;
   width: 100%;
+  height: calc(100% - 38u);
+  object-fit: cover;
+}
+
+/* Línea horizontal que cierra el borde superior de la foto. */
+.home-frase__borde {
+  position: absolute;
+  top: 38u;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--linea);
+  z-index: 2;
+}
+
+.home-frase.lineas::before,
+.home-frase.lineas::after {
+  top: 38u;
+}
+
+.home-frase__texto {
+  position: relative;
+  z-index: 1;
+  padding-top: 164u;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 33u;
+  line-height: 36u;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+}
+
+.home-frase__texto p {
+  margin: 0 0 36u;
+}
+
+.home-frase__texto .rosa {
+  color: var(--rosa);
+}
+
+.home-frase__firma {
+  margin-top: 4u;
+  color: var(--rosa);
+  font-style: italic;
+  font-size: 33u;
 }
 
 /* Hero del home: capas reales sobre el frame de 1274 x 631 del diseño. */
@@ -1518,6 +1586,26 @@ ul {
 @media (max-width: 760px) {
   .pagina > * {
     --u: calc(100cqw / 520);
+  }
+
+  /* La frase se reacomoda sola (sin los saltos de línea del diseño) para que se lea en pantallas chicas. */
+  .home-frase {
+    height: auto;
+    min-height: 420u;
+  }
+
+  .home-frase__texto {
+    padding: 100u 28u 70u;
+    font-size: 23u;
+    line-height: 30u;
+  }
+
+  .home-frase__texto p {
+    margin-bottom: 26u;
+  }
+
+  .home-frase .salto {
+    display: none;
   }
 
   .nav,
