@@ -13,9 +13,9 @@ export default function Posters() {
         </div>
         <section className="sec sec--negra posters-indice" id="contenido">
           <div className="tarjetas">
-          <TarjetaProyecto to="/posters/konex" imagen="konex-1" nombre="Konex" posicion="50% 40%" />
+          <TarjetaProyecto to="/posters/konex" imagen="konex-1" nombre="Konex" posicion="50% 84%" />
           <TarjetaProyecto to="/posters/borges" imagen="borges-1" nombre="Borges" posicion="50% 40%" />
-          <TarjetaProyecto to="/posters/las-bestias" imagen="bestias-1" nombre="Las Bestias" posicion="50% 40%" />
+          <TarjetaProyecto to="/posters/las-bestias" imagen="bestias-1" nombre="Las Bestias" posicion="50% 55%" />
           </div>
         </section>
       </main>

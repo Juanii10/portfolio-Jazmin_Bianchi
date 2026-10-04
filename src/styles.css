@@ -1573,10 +1573,211 @@ ul {
   width: 635u;
 }
 
-.afiches--konex .afiche--1 { --pb: 117u; }
-.afiches--konex .afiche--2 { --pb: 75u; }
-.afiches--konex .afiche--3 { --pb: 118u; }
-.afiches--konex .afiche--4 { --pb: 27u; }
+/* ───────────── Konex: escenario fijo que pasa de un afiche al siguiente ───────────── */
+
+/* Cada afiche ocupa una pantalla de scroll; mientras tanto la pantalla se queda quieta. */
+.konex {
+  position: relative;
+  height: calc((var(--n) + 1) * 100vh);
+  height: calc((var(--n) + 1) * 100svh);
+  background: var(--negro);
+  color: var(--crema);
+}
+
+.konex__pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.konex__fecha {
+  position: absolute;
+  z-index: 2;
+  top: 34u;
+  left: 59u;
+  margin: 0;
+  color: var(--rosa);
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 22u;
+}
+
+.konex__slide {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 330u minmax(0, 1fr);
+  column-gap: 40u;
+  padding: 36u 56u 36u 56u;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.45s ease, visibility 0s linear 0.45s;
+}
+
+.konex__slide.activa {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.6s ease 0.15s;
+}
+
+/* Texto chico, abajo a la izquierda. */
+.konex__texto {
+  align-self: end;
+  padding-bottom: 16u;
+}
+
+.konex__texto .proyecto__titulo {
+  font-size: 30u;
+  white-space: nowrap;
+}
+
+.konex__texto .proyecto__cliente {
+  font-size: 17u;
+}
+
+.konex__texto .afiche__ubicacion {
+  margin-top: 18u;
+  font-size: 15u;
+  line-height: 20u;
+}
+
+.konex__texto .afiche__objetivo {
+  margin-top: 2u;
+  font-size: 14.5u;
+  line-height: 20u;
+}
+
+/* La imagen es la protagonista: ocupa todo el alto de la pantalla. */
+.konex__imgs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14u;
+  min-height: 0;
+}
+
+.konex__imgs img {
+  flex: var(--g, 1) 1 0;
+  width: 100%;
+  min-height: 0;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Puntos de avance, sobre el borde derecho. */
+.konex__indice {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  right: 20u;
+  display: flex;
+  flex-direction: column;
+  gap: 12u;
+  transform: translateY(-50%);
+}
+
+.konex__indice button {
+  width: 9u;
+  height: 9u;
+  min-width: 7px;
+  min-height: 7px;
+  padding: 0;
+  border: 1px solid var(--crema);
+  border-radius: 50%;
+  background: transparent;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+}
+
+.konex__indice button.activo {
+  border-color: var(--rosa);
+  background: var(--rosa);
+  opacity: 1;
+}
+
+.konex__indice button:focus-visible {
+  outline: 2px solid var(--rosa);
+  outline-offset: 3px;
+}
+
+/* Título y nombre suben al activarse el afiche; las palabras se escriben una tras otra. */
+.konex__texto .proyecto__titulo,
+.konex__texto .proyecto__cliente {
+  opacity: 0;
+  transform: translateY(18u);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.konex__slide.activa .proyecto__titulo,
+.konex__slide.activa .proyecto__cliente {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.7s ease 0.35s, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+}
+
+.konex__slide.activa .proyecto__cliente {
+  transition-delay: 0.47s;
+}
+
+.konex__texto .palabra {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.5em);
+  filter: blur(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+}
+
+.konex__slide.activa .palabra {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition: opacity 0.55s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.55s ease;
+  transition-delay: calc(min(var(--i), 60) * 26ms + 0.6s);
+}
+
+/* Las frases destacadas se subrayan con un marcador rosa una vez escritas. */
+.konex__texto strong {
+  background: linear-gradient(transparent 58%, rgba(255, 155, 254, 0.38) 58%) no-repeat left / 0% 100%;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size 0.2s ease;
+}
+
+.konex__slide.activa .konex__texto strong {
+  background-size: 100% 100%;
+  transition: background-size 0.9s cubic-bezier(0.22, 1, 0.36, 1) 2s;
+}
+
+.konex__slide.activa .afiche__objetivo strong:nth-of-type(2) { transition-delay: 2.4s; }
+.konex__slide.activa .afiche__objetivo strong:nth-of-type(3) { transition-delay: 2.8s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .konex__slide,
+  .konex__slide.activa,
+  .konex__texto .proyecto__titulo,
+  .konex__texto .proyecto__cliente,
+  .konex__texto .palabra,
+  .konex__texto strong {
+    transition: none !important;
+  }
+
+  .konex__texto .proyecto__titulo,
+  .konex__texto .proyecto__cliente,
+  .konex__texto .palabra {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .konex__texto strong {
+    background-size: 100% 100%;
+  }
+}
+
 .afiches--borges .afiche--1 { --pb: 135u; }
 .afiches--borges .afiche--2 { --pb: 59u; }
 .afiches--bestias .afiche--1 { --pb: 64u; }
@@ -1586,6 +1787,45 @@ ul {
 @media (max-width: 760px) {
   .pagina > * {
     --u: calc(100cqw / 520);
+  }
+
+  /* Konex en celular: la imagen arriba y el texto chico abajo. */
+  .konex__slide {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    row-gap: 14u;
+    padding: 56u 22u 26u;
+  }
+
+  .konex__imgs {
+    order: -1;
+    align-items: center;
+  }
+
+  .konex__imgs img {
+    object-position: center;
+  }
+
+  .konex__fecha {
+    top: 16u;
+    left: 22u;
+    font-size: 19u;
+  }
+
+  .konex__indice {
+    top: auto;
+    right: 22u;
+    bottom: 26u;
+    flex-direction: row;
+    transform: none;
+  }
+
+  .konex__texto .proyecto__titulo { font-size: 26u; }
+  .konex__texto .proyecto__cliente { font-size: 16u; }
+  .konex__texto .afiche__ubicacion,
+  .konex__texto .afiche__objetivo {
+    font-size: 14.5u;
+    line-height: 1.3;
   }
 
   /* La frase se reacomoda sola (sin los saltos de línea del diseño) para que se lea en pantallas chicas. */
