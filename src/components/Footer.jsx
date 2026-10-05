@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Telefono = () => (
@@ -20,6 +21,89 @@ export function Icono({ children, texto }) {
   return <span className="icono">{texto ?? children}</span>
 }
 
+const CORREO = 'jachubianchi@outlook.com'
+const ASUNTO = 'Hola Jazmín'
+const enCodigo = encodeURIComponent
+
+// Mail de contacto: abre la app de correo (mailto:) con el destinatario y un asunto. Si el navegador no
+// tiene ninguna app de correo configurada no pasa nada, así que, si en 1 segundo la página no perdió el foco
+// (señal de que se abrió otra app), se ofrece escribir desde Gmail u Outlook en la web, o copiar la dirección.
+function EnlaceCorreo() {
+  const [abierto, setAbierto] = useState(false)
+  const [copiado, setCopiado] = useState(false)
+  const raiz = useRef(null)
+  const timer = useRef(0)
+
+  const alTocar = () => {
+    let cambio = false
+    const marcar = () => (cambio = true)
+    window.addEventListener('blur', marcar, { once: true })
+    document.addEventListener('visibilitychange', marcar, { once: true })
+    clearTimeout(timer.current)
+    timer.current = setTimeout(() => {
+      window.removeEventListener('blur', marcar)
+      document.removeEventListener('visibilitychange', marcar)
+      if (!cambio) setAbierto(true)
+    }, 1000)
+  }
+
+  useEffect(() => {
+    if (!abierto) return
+    const cerrar = (e) => {
+      if (e.type === 'keydown' ? e.key === 'Escape' : !raiz.current?.contains(e.target)) setAbierto(false)
+    }
+    document.addEventListener('mousedown', cerrar)
+    document.addEventListener('keydown', cerrar)
+    return () => {
+      document.removeEventListener('mousedown', cerrar)
+      document.removeEventListener('keydown', cerrar)
+    }
+  }, [abierto])
+
+  useEffect(() => () => clearTimeout(timer.current), [])
+
+  const copiar = async () => {
+    try {
+      await navigator.clipboard.writeText(CORREO)
+      setCopiado(true)
+      setTimeout(() => setCopiado(false), 2000)
+    } catch {
+      window.prompt('Copiá la dirección:', CORREO)
+    }
+  }
+
+  return (
+    <li className="contacto__correo" ref={raiz}>
+      <a href={`mailto:${CORREO}?subject=${enCodigo(ASUNTO)}`} onClick={alTocar}>
+        <Icono><Mail /></Icono>
+        {CORREO}
+      </a>
+      {abierto && (
+        <div className="correo-menu" role="group" aria-label="Escribir un mail">
+          <p>No se abrió tu app de correo. Escribile desde:</p>
+          <a
+            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${CORREO}&su=${enCodigo(ASUNTO)}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Gmail
+          </a>
+          <a
+            href={`https://outlook.live.com/mail/0/deeplink/compose?to=${CORREO}&subject=${enCodigo(ASUNTO)}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Outlook
+          </a>
+          <button type="button" onClick={copiar}>
+            {copiado ? '¡Dirección copiada!' : 'Copiar la dirección'}
+          </button>
+        </div>
+      )}
+    </li>
+  )
+}
+
 export function Contacto() {
   return (
     <ul className="contacto-lista">
@@ -29,12 +113,7 @@ export function Contacto() {
           11-7151-1846
         </a>
       </li>
-      <li>
-        <a href="mailto:jachubianchi@outlook.com">
-          <Icono><Mail /></Icono>
-          jachubianchi@outlook.com
-        </a>
-      </li>
+      <EnlaceCorreo />
       <li>
         <span>
           <Icono><Pin /></Icono>
@@ -49,15 +128,15 @@ export function Sociales() {
   return (
     <ul className="contacto-lista contacto-lista--sociales">
       <li>
-        <a className="subrayado" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+        <a className="subrayado" href="https://www.linkedin.com/in/jazmin-bianchi/" target="_blank" rel="noreferrer">
           <Icono texto="in" />
           Jazmin Bianchi
         </a>
       </li>
       <li>
-        <a className="subrayado" href="https://www.behance.net/" target="_blank" rel="noreferrer">
+        <a className="subrayado" href="https://www.behance.net/jazminbianchi1" target="_blank" rel="noreferrer">
           <Icono texto="Bē" />
-          Jazmin Bianch
+          Jazmin Bianchi
         </a>
       </li>
     </ul>
