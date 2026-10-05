@@ -1,20 +1,20 @@
 import { useRef, useState } from 'react'
+import { useIdioma } from '../idioma.jsx'
 
 // Slider de "Entre palabras": una foto grande al centro (borde rosa) y las vecinas asomando
 // a los costados. Es circular: después de la última vuelve a la primera.
-// Las fotos están en public/img/exp/slide-NN.jpg (se exportan del zip original, 1600 px de ancho).
+// Las fotos están en public/img/exp/slide-NN.jpg (1600 px de ancho), exportadas de la carpeta FOTOS del Drive.
 const FOTOS = [
-  'Letras recortadas en negro que forman una composición en diagonal',
-  'Letras recortadas y la palabra «imaginarias» partida en franjas',
-  'Letras recortadas de «imaginarias» dispersas sobre el papel',
-  'Las palabras «misterioso» y «pie» pintadas con pincel y tinta negra',
-  'Trazos de pincel con tinta negra sobre papel',
-  'Las palabras «misterio» y «pie» con trazos de pintura negra',
-  'Letras góticas de la palabra «complejo» sobre papel blanco',
-  'Collage de recortes de letras y texturas con la palabra «sentido»',
-  'Palabras escritas con fibras de colores: «misterio», «sentido», «estatua» y «pie»',
-  'La palabra «sentido» armada con tiras de papel violeta',
-].map((alt, i) => ({ alt, src: `img/exp/slide-${String(i + 1).padStart(2, '0')}.jpg` }))
+  ['Letras recortadas en negro que forman una composición en diagonal', 'Black cut-out letters forming a diagonal composition'],
+  ['Letras recortadas y la palabra «imaginarias» partida en franjas', 'Cut-out letters and the word “imaginarias” split into strips'],
+  ['La palabra «imaginaria» con letras recortadas dispuestas en curva', 'The word “imaginaria” in cut-out letters arranged in a curve'],
+  ['Las palabras «misterioso» y «pie» pintadas con pincel y tinta negra', 'The words “misterioso” and “pie” painted with a brush and black ink'],
+  ['La palabra «misterio» con trazos de pintura negra', 'The word “misterio” in black paint strokes'],
+  ['Letras góticas de la palabra «complejo»', 'Gothic letters spelling the word “complejo”'],
+  ['Collage de recortes de letras y texturas', 'Collage of cut-out letters and textures'],
+  ['Palabras escritas con fibras de colores: «misterio», «sentido» y «estatua»', 'Words written with colored markers: “misterio”, “sentido” and “estatua”'],
+  ['La palabra «sentido» armada con tiras de papel violeta', 'The word “sentido” built from strips of violet paper'],
+].map(([es, en], i) => ({ es, en, src: `img/exp/slide-${String(i + 1).padStart(2, '0')}.jpg` }))
 
 const N = FOTOS.length
 
@@ -22,12 +22,13 @@ const N = FOTOS.length
 const relativa = (i, activa) => ((((i - activa) % N) + N + N / 2) % N) - N / 2
 
 function Flecha({ lado, onClick }) {
+  const { t } = useIdioma()
   return (
     <button
       type="button"
       className={`exp-slider__flecha exp-slider__flecha--${lado}`}
       onClick={onClick}
-      aria-label={lado === 'izq' ? 'Foto anterior' : 'Foto siguiente'}
+      aria-label={lado === 'izq' ? t('Foto anterior', 'Previous photo') : t('Foto siguiente', 'Next photo')}
     >
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d={lado === 'izq' ? 'M15 3 6 12l9 9' : 'm9 3 9 9-9 9'} />
@@ -37,6 +38,7 @@ function Flecha({ lado, onClick }) {
 }
 
 export default function SliderExperimentacion() {
+  const { t } = useIdioma()
   const [activa, setActiva] = useState(0)
   const inicio = useRef(null)
 
@@ -60,8 +62,8 @@ export default function SliderExperimentacion() {
     <div
       className="exp-slider"
       role="region"
-      aria-roledescription="carrusel"
-      aria-label="Composiciones con palabras"
+      aria-roledescription={t('carrusel', 'carousel')}
+      aria-label={t('Composiciones con palabras', 'Compositions with words')}
       tabIndex={0}
       onKeyDown={alTeclear}
       onPointerDown={alPresionar}
@@ -76,12 +78,12 @@ export default function SliderExperimentacion() {
             key={f.src}
             className={`exp-slider__foto exp-slider__foto--${pos}`}
             aria-hidden={rel !== 0}
-            aria-label={`Foto ${i + 1} de ${N}`}
+            aria-label={t(`Foto ${i + 1} de ${N}`, `Photo ${i + 1} of ${N}`)}
             onClick={rel === -1 || rel === 1 ? () => ir(rel) : undefined}
           >
             <img
               src={`${import.meta.env.BASE_URL}${f.src}`}
-              alt={rel === 0 ? f.alt : ''}
+              alt={rel === 0 ? t(f.es, f.en) : ''}
               loading={Math.abs(rel) <= 1 ? 'eager' : 'lazy'}
               decoding="async"
               draggable="false"
@@ -96,7 +98,7 @@ export default function SliderExperimentacion() {
             type="button"
             className={i === activa ? 'activo' : ''}
             onClick={() => setActiva(i)}
-            aria-label={`Ir a la foto ${i + 1}`}
+            aria-label={t(`Ir a la foto ${i + 1}`, `Go to photo ${i + 1}`)}
             aria-current={i === activa}
           />
         ))}

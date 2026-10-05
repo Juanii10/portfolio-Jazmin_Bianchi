@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useIdioma } from '../idioma.jsx'
 
 // Sección "Edición de reels": una fila de botones (píldoras) elige la marca y cambia, a la vez, el nombre,
 // el texto y los celulares con sus reels. Funciona como un grupo de pestañas (clic o flechas del teclado).
@@ -32,6 +33,7 @@ function Parlante({ ondas }) {
 }
 
 function Celulares({ reels, sonido, alSilenciarPorBloqueo }) {
+  const { t } = useIdioma()
   const [centro, setCentro] = useState(0)
   const videos = useRef([])
   const n = reels.length
@@ -67,7 +69,7 @@ function Celulares({ reels, sonido, alSilenciarPorBloqueo }) {
   const siguiente = () => setCentro((c) => (c + 1) % n)
 
   return (
-    <div className="reels__fila" aria-roledescription="carrusel" aria-label="Reels de la marca">
+    <div className="reels__fila" aria-roledescription={t('carrusel', 'carousel')} aria-label={t('Reels de la marca', 'Brand reels')}>
       {reels.map((r, i) => {
         // Posición respecto del centro: -1 (izquierda), 0 (centro), 1 (derecha); el resto queda oculto.
         const rel = ((((i - centro) % n) + n + Math.floor(n / 2)) % n) - Math.floor(n / 2)
@@ -100,6 +102,7 @@ function Celulares({ reels, sonido, alSilenciarPorBloqueo }) {
 }
 
 export default function ReelsMarcas({ titulo, marcas }) {
+  const { t, fecha: traducirFecha } = useIdioma()
   const [activa, setActiva] = useState(0)
   const [sonido, setSonido] = useState(false)
   const anterior = useRef(0)
@@ -130,7 +133,7 @@ export default function ReelsMarcas({ titulo, marcas }) {
         type="button"
         role="switch"
         aria-checked={sonido}
-        aria-label="Sonido"
+        aria-label={t('Sonido', 'Sound')}
         className={`reels__switch ${sonido ? 'activo' : ''}`}
         onClick={() => setSonido((s) => !s)}
       >
@@ -145,7 +148,7 @@ export default function ReelsMarcas({ titulo, marcas }) {
 
       <h2 className="proyecto__titulo reels__titulo">[[ {titulo}</h2>
 
-      <div className="reels__tabs" role="tablist" aria-label="Marcas" onKeyDown={alTeclear}>
+      <div className="reels__tabs" role="tablist" aria-label={t('Marcas', 'Brands')} onKeyDown={alTeclear}>
         {marcas.map((m, i) => (
           <button
             key={m.nombre}
@@ -166,7 +169,7 @@ export default function ReelsMarcas({ titulo, marcas }) {
 
       <div key={marca.nombre} className="reels__cambio" id="reels-panel" role="tabpanel" aria-labelledby={`reels-tab-${activa}`}>
         <p className="proyecto__cliente">{marca.nombre}</p>
-        {marca.fecha && <p className="proyecto__fecha">*{marca.fecha}*</p>}
+        {marca.fecha && <p className="proyecto__fecha">*{traducirFecha(marca.fecha)}*</p>}
       </div>
 
       <div className="reels__zona">

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useIdioma } from '../idioma.jsx'
 
 const Telefono = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -22,13 +23,14 @@ export function Icono({ children, texto }) {
 }
 
 const CORREO = 'jachubianchi@outlook.com'
-const ASUNTO = 'Hola Jazmín'
 const enCodigo = encodeURIComponent
 
 // Mail de contacto: abre la app de correo (mailto:) con el destinatario y un asunto. Si el navegador no
 // tiene ninguna app de correo configurada no pasa nada, así que, si en 1 segundo la página no perdió el foco
 // (señal de que se abrió otra app), se ofrece escribir desde Gmail u Outlook en la web, o copiar la dirección.
 function EnlaceCorreo() {
+  const { t } = useIdioma()
+  const ASUNTO = t('Hola Jazmín', 'Hello Jazmín')
   const [abierto, setAbierto] = useState(false)
   const [copiado, setCopiado] = useState(false)
   const raiz = useRef(null)
@@ -68,7 +70,7 @@ function EnlaceCorreo() {
       setCopiado(true)
       setTimeout(() => setCopiado(false), 2000)
     } catch {
-      window.prompt('Copiá la dirección:', CORREO)
+      window.prompt(t('Copiá la dirección:', 'Copy the address:'), CORREO)
     }
   }
 
@@ -79,8 +81,8 @@ function EnlaceCorreo() {
         {CORREO}
       </a>
       {abierto && (
-        <div className="correo-menu" role="group" aria-label="Escribir un mail">
-          <p>No se abrió tu app de correo. Escribile desde:</p>
+        <div className="correo-menu" role="group" aria-label={t('Escribir un mail', 'Write an email')}>
+          <p>{t('No se abrió tu app de correo. Escribile desde:', "Your mail app didn't open. Write to her from:")}</p>
           <a
             href={`https://mail.google.com/mail/?view=cm&fs=1&to=${CORREO}&su=${enCodigo(ASUNTO)}`}
             target="_blank"
@@ -96,7 +98,7 @@ function EnlaceCorreo() {
             Outlook
           </a>
           <button type="button" onClick={copiar}>
-            {copiado ? '¡Dirección copiada!' : 'Copiar la dirección'}
+            {copiado ? t('¡Dirección copiada!', 'Address copied!') : t('Copiar la dirección', 'Copy the address')}
           </button>
         </div>
       )}
@@ -144,6 +146,7 @@ export function Sociales() {
 }
 
 export default function Footer({ negro = false }) {
+  const { t } = useIdioma()
   return (
     <footer className={negro ? 'footer footer--negro' : 'footer'} id="contacto">
       <div className="footer__main">
@@ -151,23 +154,23 @@ export default function Footer({ negro = false }) {
           Jazmín<br />Bianchi
         </p>
         <div className="footer__col footer__col--nav">
-          <h2>Navegar</h2>
-          <Link to="/">Inicio</Link>
-          <Link to="/#sobre-jaz">Sobre Jaz</Link>
-          <Link to="/#proyectos">Proyectos</Link>
+          <h2>{t('Navegar', 'Browse')}</h2>
+          <Link to="/">{t('Inicio', 'Home')}</Link>
+          <Link to="/#sobre-jaz">{t('Sobre Jaz', 'About Jaz')}</Link>
+          <Link to="/#proyectos">{t('Proyectos', 'Projects')}</Link>
         </div>
         <div className="footer__col footer__col--contacto">
-          <h2>Contacto</h2>
+          <h2>{t('Contacto', 'Contact')}</h2>
           <Contacto />
         </div>
         <div className="footer__col footer__col--sociales">
-          <h2>Sociales</h2>
+          <h2>{t('Sociales', 'Social')}</h2>
           <Sociales />
         </div>
       </div>
       <div className="footer__bottom">
         <span>portfolio 2026</span>
-        <span>diseñado por Jazmin Bianchi</span>
+        <span>{t('diseñado por Jazmin Bianchi', 'designed by Jazmin Bianchi')}</span>
       </div>
     </footer>
   )

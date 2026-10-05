@@ -1,5 +1,6 @@
 import Img from './Img.jsx'
 import sizes from '../images.json'
+import { useIdioma } from '../idioma.jsx'
 
 // Hero de cada proyecto: la composición (fotos + título) viene del diseño como imagen,
 // el <h1> real queda oculto visualmente para accesibilidad y SEO.
@@ -8,6 +9,7 @@ import sizes from '../images.json'
 // { etiqueta, href, caja: [x0, y0, x1, y1] } con la caja en píxeles de la imagen original.
 export default function Hero({ imagen, titulo, flecha, enlaces = [], destino = '#contenido' }) {
   const { w, h } = sizes[imagen] ?? {}
+  const { t } = useIdioma()
   return (
     <section className="hero">
       <Img name={imagen} alt="" eager />
@@ -31,7 +33,7 @@ export default function Hero({ imagen, titulo, flecha, enlaces = [], destino = '
         <a
           className="hero__flecha"
           href={destino}
-          aria-label="Ir al contenido"
+          aria-label={t('Ir al contenido', 'Go to content')}
           style={{ left: `${flecha[0]}%`, top: `${flecha[1]}%` }}
         />
       )}

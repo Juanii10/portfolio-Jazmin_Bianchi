@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Palabras from './Palabras.jsx'
+import { useIdioma } from '../idioma.jsx'
 import sizes from '../images.json'
 
 // Escenario fijo con varios afiches: la pantalla queda quieta y, al scrollear, se pasa de un afiche al
@@ -8,6 +9,7 @@ import sizes from '../images.json'
 //
 // afiches: [{ titulo, nombre, ubicacion, objetivo, imagenes: [{ name, alt }] }]
 export default function EscenarioAfiches({ fecha, afiches }) {
+  const { t, fecha: traducirFecha } = useIdioma()
   const ref = useRef(null)
   const [activo, setActivo] = useState(0)
   const n = afiches.length
@@ -43,7 +45,7 @@ export default function EscenarioAfiches({ fecha, afiches }) {
   return (
     <section className="konex" ref={ref} style={{ '--n': n }}>
       <div className="konex__pin">
-        <p className="konex__fecha">{fecha}</p>
+        <p className="konex__fecha">{traducirFecha(fecha)}</p>
 
         {afiches.map((a, i) => (
           <article
@@ -57,7 +59,7 @@ export default function EscenarioAfiches({ fecha, afiches }) {
               <p className="proyecto__cliente">{a.nombre}</p>
               <p className="afiche__ubicacion">
                 <Palabras>
-                  <strong>Ubicación:</strong> {a.ubicacion}
+                  <strong>{t('Ubicación:', 'Location:')}</strong> {a.ubicacion}
                 </Palabras>
               </p>
               <p className="afiche__objetivo">
@@ -86,14 +88,14 @@ export default function EscenarioAfiches({ fecha, afiches }) {
           </article>
         ))}
 
-        <div className="konex__indice" role="tablist" aria-label="Afiches">
+        <div className="konex__indice" role="tablist" aria-label={t('Afiches', 'Posters')}>
           {afiches.map((a, i) => (
             <button
               key={a.titulo + a.nombre}
               type="button"
               role="tab"
               aria-selected={i === activo}
-              aria-label={`Ir al ${a.titulo}: ${a.nombre}`}
+              aria-label={t(`Ir al ${a.titulo}: ${a.nombre}`, `Go to ${a.titulo}: ${a.nombre}`)}
               className={i === activo ? 'activo' : ''}
               onClick={() => irA(i)}
             />

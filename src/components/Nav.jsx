@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { useIdioma } from '../idioma.jsx'
 
 const PROYECTOS = [
-  { to: '/papeleria', nombre: 'Papelería' },
-  { to: '/experimentacion', nombre: 'Experimentación' },
-  { to: '/diseno-digital', nombre: 'Diseño digital' },
-  { to: '/posters', nombre: 'Posters' },
+  { to: '/papeleria', es: 'Papelería', en: 'Stationery' },
+  { to: '/experimentacion', es: 'Experimentación', en: 'Experimentation' },
+  { to: '/diseno-digital', es: 'Diseño digital', en: 'Digital design' },
+  { to: '/posters', es: 'Posters', en: 'Posters' },
 ]
 
 // "Proyectos" abre un desplegable para ir directo a cualquier proyecto desde cualquier página.
@@ -16,6 +17,7 @@ function MenuProyectos() {
   const raiz = useRef(null)
   const cierre = useRef(0)
   const { pathname } = useLocation()
+  const { t } = useIdioma()
 
   // Al cambiar de página se cierra.
   useEffect(() => setAbierto(false), [pathname])
@@ -65,7 +67,7 @@ function MenuProyectos() {
         onClick={() => setAbierto((a) => !a)}
         onKeyDown={alTeclear}
       >
-        Proyectos
+        {t('Proyectos', 'Projects')}
         <svg viewBox="0 0 12 8" aria-hidden="true">
           <path d="m1 1.5 5 5 5-5" />
         </svg>
@@ -75,13 +77,13 @@ function MenuProyectos() {
         <ul className="nav__menu" id="menu-proyectos">
           <li>
             <Link to="/#proyectos" className="nav__menu-todos">
-              Ver todos
+              {t('Ver todos', 'View all')}
             </Link>
           </li>
-          {PROYECTOS.map(({ to, nombre }) => (
+          {PROYECTOS.map(({ to, es, en }) => (
             <li key={to}>
               <Link to={to} aria-current={pathname.startsWith(to) ? 'page' : undefined}>
-                {nombre}
+                {t(es, en)}
               </Link>
             </li>
           ))}
@@ -92,16 +94,24 @@ function MenuProyectos() {
 }
 
 export default function Nav({ conContacto = true, compacto = false }) {
+  const { lang, alternar, t } = useIdioma()
   return (
     <header className={compacto ? 'nav nav--compacto' : 'nav'}>
-      <nav className="nav__links" aria-label="Principal">
-        <Link to="/">Inicio</Link>
-        <Link to="/#sobre-jaz">Sobre Jaz</Link>
+      <nav className="nav__links" aria-label={t('Principal', 'Main')}>
+        <Link to="/">{t('Inicio', 'Home')}</Link>
+        <Link to="/#sobre-jaz">{t('Sobre Jaz', 'About Jaz')}</Link>
         <MenuProyectos />
-        {conContacto && <a href="#contacto">Contacto</a>}
+        {conContacto && <a href="#contacto">{t('Contacto', 'Contact')}</a>}
       </nav>
-      <button className="nav__lang" type="button" lang="es" title="Idioma">
-        Español
+      <button
+        className="nav__lang"
+        type="button"
+        lang={lang}
+        title={t('Cambiar el idioma a inglés', 'Switch the language to Spanish')}
+        aria-label={t('Idioma: español. Cambiar a inglés', 'Language: English. Switch to Spanish')}
+        onClick={alternar}
+      >
+        {lang === 'es' ? 'Español' : 'English'}
       </button>
     </header>
   )

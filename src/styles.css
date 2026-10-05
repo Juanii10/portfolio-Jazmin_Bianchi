@@ -1230,9 +1230,11 @@ ul {
   max-width: none;
 }
 
-/* La foto se ve entera (sin recortar ni hacer zoom) sobre el fondo blanco del marco. */
+/* Las fotos son escaneos con mucho margen blanco: se agrandan un poco (--zoom-foto) para que la obra ocupe
+   más lugar dentro del marco. El margen que se recorta es solo papel en blanco. */
 .exp-slider__foto img {
   object-fit: contain;
+  transform: scale(var(--zoom-foto, 1.45));
 }
 
 .exp-slider__foto--centro {
