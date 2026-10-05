@@ -8,7 +8,7 @@
 // Los mp4 quedan en public/video/reels/<marca>-<n>.mp4 (+ .jpg). Si ya existen, se saltean.
 // El ffmpeg viene del paquete ffmpeg-static (devDependency).
 import { spawnSync } from 'node:child_process'
-import { existsSync, mkdirSync, rmSync, statSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, rmSync, statSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import ffmpeg from 'ffmpeg-static'
@@ -19,13 +19,15 @@ const salida = join(raiz, 'public', 'video', 'reels')
 mkdirSync(tmp, { recursive: true })
 mkdirSync(salida, { recursive: true })
 
-// Archivos del Drive compartido "REELS portfolio" (id de cada archivo).
-const REELS = {
-  cuan: ['ID_DE_DRIVE', 'ID_DE_DRIVE', 'ID_DE_DRIVE'], // Reel 1, 10 (1), 11
-  erasmo: ['ID_DE_DRIVE', 'ID_DE_DRIVE', 'ID_DE_DRIVE'], // reel (2), 17, 20
-  visionar: ['ID_DE_DRIVE', 'ID_DE_DRIVE', 'ID_DE_DRIVE'], // reel (3), HOOK, 6
-  caterina: ['ID_DE_DRIVE', 'ID_DE_DRIVE', 'ID_DE_DRIVE'], // nuevo si, 26 (1), 3 (1)
+// Ids de los archivos originales en Drive, por marca. Viven en tools/reels-drive.json, que NO se sube al
+// repositorio (está en el .gitignore) porque quien tenga un id puede bajar el video original.
+// Hay un modelo en tools/reels-drive.ejemplo.json.
+const archivoIds = join(raiz, 'tools', 'reels-drive.json')
+if (!existsSync(archivoIds)) {
+  console.error('Falta tools/reels-drive.json con los ids de Drive (ver tools/reels-drive.ejemplo.json).')
+  process.exit(1)
 }
+const REELS = JSON.parse(readFileSync(archivoIds, 'utf8'))
 
 const MB = (ruta) => (statSync(ruta).size / 1e6).toFixed(1)
 const correr = (cmd, args) => {

@@ -8,3 +8,7 @@ public/fonts/*.otf
 public/fonts/*.ttf
 public/fonts/*.woff
 public/fonts/*.woff2
+
+# Ids de Drive de los videos originales y guía de publicación (no van al repositorio)
+tools/reels-drive.json
+DESPLIEGUE.md
