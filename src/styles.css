@@ -1449,19 +1449,281 @@ ul {
   bottom: 119u;
 }
 
-.dig-reels__texto {
+.reels__titulo {
   position: absolute;
   left: 57u;
-  top: 248u;
+  top: 238u;
+  margin: 0;
+}
+
+.reels__tabs {
+  position: absolute;
+  left: 57u;
+  top: 306u;
+  width: 480u;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8u;
+}
+
+/* Nombre de la marca (blanco) y fecha (rosa), abajo a la izquierda. */
+.reels__cambio {
+  position: absolute;
+  left: 57u;
+  top: 462u;
   width: 480u;
 }
 
-.dig-reels__celu {
+.reels__cambio .proyecto__cliente {
+  color: #fff;
+}
+
+.reels__cambio .proyecto__fecha {
+  margin-top: 28u;
+}
+
+/* Píldoras como las del hero: la activa se rellena de rosa. */
+.reels__tab {
+  padding: 6u 15u;
+  border: 1px solid var(--rosa);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--rosa);
+  font: 700 15u/1.2 var(--texto);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.reels__tab:hover {
+  background: rgba(255, 155, 254, 0.18);
+}
+
+.reels__tab.activa {
+  background: var(--rosa);
+  color: #000;
+}
+
+.reels__tab:focus-visible {
+  outline: 2px solid var(--crema);
+  outline-offset: 3px;
+}
+
+/* Al cambiar de marca, el texto sube suavemente y el celular entra deslizándose desde el lado. */
+.reels__cambio > * {
+  animation: reels-sube 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reels__cambio > :nth-child(2) { animation-delay: 0.06s; }
+.reels__cambio > :nth-child(3) { animation-delay: 0.12s; }
+
+@keyframes reels-sube {
+  from {
+    opacity: 0;
+    transform: translateY(14u);
+  }
+}
+
+.reels__escenario--der {
+  animation: reels-entra-der 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reels__escenario--izq {
+  animation: reels-entra-izq 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes reels-entra-der {
+  from {
+    opacity: 0;
+    transform: translateX(60u);
+  }
+}
+
+@keyframes reels-entra-izq {
+  from {
+    opacity: 0;
+    transform: translateX(-60u);
+  }
+}
+
+/* Zona de los celulares (a la derecha): el escenario y, debajo, el botón de sonido. */
+.reels__zona {
   position: absolute;
-  top: 60u;
-  right: 0;
-  width: 546u;
-  max-width: none;
+  top: 92u;
+  right: 34u;
+  width: 690u;
+  height: 590u;
+}
+
+/* Escenario de los celulares: fila con el reel activo al centro y los vecinos asomando a los costados. */
+.reels__escenario {
+  position: absolute;
+  inset: 0;
+}
+
+/* Interruptor de sonido (parlante silenciado / con sonido): arriba a la izquierda, sobre el título. */
+.reels__switch {
+  position: absolute;
+  z-index: 4;
+  left: 57u;
+  top: 146u;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 78u;
+  height: 34u;
+  min-width: 56px;
+  min-height: 26px;
+  padding: 0 3u;
+  border: 1px solid var(--rosa);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reels__switch-icono {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26u;
+  height: 26u;
+  color: var(--rosa);
+  transition: color 0.3s ease;
+}
+
+.reels__switch-icono svg {
+  width: 17u;
+  height: 17u;
+  min-width: 13px;
+  min-height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* El parlante que queda sobre la perilla se ve en negro. */
+.reels__switch:not(.activo) .reels__switch-icono:first-child,
+.reels__switch.activo .reels__switch-icono:nth-child(2) {
+  color: #000;
+}
+
+/* La perilla se desliza de un emoji al otro y se queda sobre el activo. */
+.reels__switch-perilla {
+  position: absolute;
+  top: 3u;
+  left: 3u;
+  width: 26u;
+  height: 26u;
+  border-radius: 50%;
+  background: var(--rosa);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reels__switch.activo .reels__switch-perilla {
+  transform: translateX(44u);
+}
+
+.reels__switch:focus-visible {
+  outline: 2px solid var(--crema);
+  outline-offset: 3px;
+}
+
+.reels__fila {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.reel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 272u;
+  height: 560u;
+  margin: -280u 0 0 -136u;
+  padding: 7u;
+  border-radius: 44u;
+  background: #0b0b0d;
+  box-shadow: 0 0 0 2u #8c91a0, 0 24u 48u rgba(0, 0, 0, 0.55);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease, filter 0.8s ease;
+}
+
+.reel--centro {
+  z-index: 3;
+  transform: translateX(0) scale(1);
+}
+
+.reel--izq,
+.reel--der {
+  z-index: 2;
+  opacity: 0.55;
+  filter: brightness(0.7);
+  cursor: pointer;
+}
+
+.reel--izq {
+  transform: translateX(-236u) scale(0.78);
+}
+
+.reel--der {
+  transform: translateX(236u) scale(0.78);
+}
+
+.reel--izq:hover,
+.reel--der:hover {
+  opacity: 0.85;
+  filter: brightness(0.9);
+}
+
+.reel--oculto {
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.reel__pantalla {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 37u;
+  background: #000;
+}
+
+.reel__pantalla video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Isla dinámica del celular. */
+.reel__isla {
+  position: absolute;
+  top: 12u;
+  left: 50%;
+  width: 80u;
+  height: 24u;
+  margin-left: -40u;
+  border-radius: 999px;
+  background: #000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reels__cambio > *,
+  .reels__escenario--der,
+  .reels__escenario--izq {
+    animation: none;
+  }
+
+  .reel {
+    transition: none;
+  }
 }
 
 .dig-web__cabecera {
@@ -2001,14 +2263,37 @@ ul {
     display: none;
   }
 
-  .dig-reels__texto,
-  .dig-reels__celu {
-    position: static;
+  .reels__zona {
+    position: relative;
+    top: auto;
+    right: auto;
     width: 100%;
+    height: 470u;
+    margin-top: 24u;
   }
 
-  .dig-reels__celu {
-    margin-top: 24u;
+  .reels__switch,
+  .reels__titulo,
+  .reels__tabs,
+  .reels__cambio {
+    position: static;
+    width: auto;
+  }
+
+  .reels__switch {
+    margin-bottom: 22u;
+  }
+
+  .reels__tabs {
+    margin: 14u 0 20u;
+  }
+
+  .reels__cambio .proyecto__fecha {
+    margin-top: 10u;
+  }
+
+  .reels__tab {
+    font-size: 14.5u;
   }
 
   .dig-web__cabecera {

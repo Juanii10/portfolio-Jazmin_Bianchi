@@ -3,6 +3,24 @@ import Footer from '../components/Footer.jsx'
 import Hero from '../components/Hero.jsx'
 import Img from '../components/Img.jsx'
 import Proyecto from '../components/Proyecto.jsx'
+import ReelsMarcas from '../components/ReelsMarcas.jsx'
+
+// Los 3 reels de cada marca: public/video/reels/<clave>-<n>.mp4 (+ .jpg de portada), que genera
+// `node tools/comprimir_reels.mjs` a partir de los originales del Drive.
+const reelsDe = (clave, nombre) =>
+  [1, 2, 3].map((n) => ({
+    video: `video/reels/${clave}-${n}.mp4`,
+    poster: `video/reels/${clave}-${n}.jpg`,
+    alt: `Reel ${n} de ${nombre}`,
+  }))
+
+// Marcas de la sección "Edición de reels". Cada una cambia el nombre, la fecha y los celulares.
+const MARCAS = [
+  { nombre: 'Cuan Arquitectura', fecha: 'Julio 2025 - Actualidad', reels: reelsDe('cuan', 'Cuan Arquitectura') },
+  { nombre: 'Erasmo', fecha: 'Julio 2026 - Actualidad', reels: reelsDe('erasmo', 'Erasmo') },
+  { nombre: 'Visionar Coaching', fecha: 'Abril 2026 - Actualidad', reels: reelsDe('visionar', 'Visionar Coaching') },
+  { nombre: 'Caterina Beauty Studio', fecha: 'Julio 2026 - Actualidad', reels: reelsDe('caterina', 'Caterina Beauty Studio') },
+]
 
 // Botones dibujados en la parte de arriba de la imagen del hero (caja en px de la imagen de 2444 x 1198).
 const ENLACES = [
@@ -78,16 +96,7 @@ export default function DisenoDigital() {
           </section>
 
           <section className="sec sec--negra dig-reels" id="edicion-de-reels">
-            <div className="dig-reels__texto">
-              <Proyecto titulo="Edición de reels" cliente="Cuan Arquitectura" fecha="Julio 2025 - Actualidad">
-                <p>
-                  Creé una serie de tarjetones para acompañar los regalos del día del padre en una pastelería.
-                  trabajé una propuesta cálida y cercana, incorporando recursos gráficos que remiten a la
-                  celebración y a la identidad del espacio.
-                </p>
-              </Proyecto>
-            </div>
-            <Img className="dig-reels__celu" name="dig-reels" alt="Reel de Cuan Arquitectura en un celular" />
+            <ReelsMarcas titulo="Edición de reels" marcas={MARCAS} />
           </section>
 
           {/* Diseño web */}

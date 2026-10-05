@@ -41,7 +41,6 @@
     { "name": "dig-caterina-celu", "src": "dig", "x": 708, "y": 4373, "w": 500, "h": 1024 },
     { "name": "dig-banner-mueblin", "src": "dig", "x": 59, "y": 5543, "w": 1160, "h": 505 },
     { "name": "dig-banner-comardex", "src": "dig", "x": 59, "y": 6085, "w": 1160, "h": 506 },
-    { "name": "dig-reels", "src": "dig", "x": 728, "y": 6650, "w": 546, "h": 645 },
     { "name": "dig-uikit", "src": "dig", "x": 640, "y": 7415, "w": 590, "h": 380 },
     { "name": "dig-micrositio-1", "src": "dig", "x": 0, "y": 7998, "w": 1274, "h": 650 },
     { "name": "dig-micrositio-2", "src": "dig", "x": 0, "y": 8833, "w": 1274, "h": 668 },

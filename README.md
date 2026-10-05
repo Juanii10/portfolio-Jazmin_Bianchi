@@ -20,3 +20,6 @@ Cuando haya fotos originales, se reemplaza el JPG correspondiente en `public/img
 
 ## Escala
 Las medidas del CSS usan la unidad `u` (1u = 1px del frame de 1274px del diseño), que escala con el ancho de la página. Ver `vite.config.js`.
+
+## Reels (Diseño digital)
+Los reels de la sección "Edición de reels" son 3 por marca en `public/video/reels/<marca>-<n>.mp4` (+ portada `.jpg`). `node tools/comprimir_reels.mjs` los baja del Drive de originales (.mov) y los comprime (ffmpeg viene de `ffmpeg-static`, devDependency); procesa de a uno y borra el original.
