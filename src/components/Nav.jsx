@@ -5,15 +5,37 @@ import { useIdioma } from '../idioma.jsx'
 const PROYECTOS = [
   { to: '/papeleria', es: 'Papelería', en: 'Stationery' },
   { to: '/experimentacion', es: 'Experimentación', en: 'Experimentation' },
-  { to: '/diseno-digital', es: 'Diseño digital', en: 'Digital design' },
-  { to: '/posters', es: 'Posters', en: 'Posters' },
+  {
+    to: '/diseno-digital',
+    es: 'Diseño digital',
+    en: 'Digital design',
+    hijos: [
+      { to: '/diseno-digital#piezas-para-redes', es: 'Piezas para redes', en: 'Social media pieces' },
+      { to: '/diseno-digital#banners-web', es: 'Banners Web', en: 'Web Banners' },
+      { to: '/diseno-digital#edicion-de-reels', es: 'Edición de reels', en: 'Reel editing' },
+      { to: '/diseno-digital#diseno-web', es: 'Diseño web', en: 'Web design' },
+    ],
+  },
+  {
+    to: '/posters',
+    es: 'Posters',
+    en: 'Posters',
+    hijos: [
+      { to: '/posters/konex', es: 'Konex', en: 'Konex' },
+      { to: '/posters/borges', es: 'Borges', en: 'Borges' },
+      { to: '/posters/las-bestias', es: 'Las Bestias', en: 'Las Bestias' },
+    ],
+  },
 ]
 
 // "Proyectos" abre un desplegable para ir directo a cualquier proyecto desde cualquier página.
 // Se abre con clic o con el mouse encima (solo en dispositivos con mouse) y se cierra con Esc, con un
 // clic afuera o al elegir una opción. Con el teclado: Enter/Espacio o flecha abajo lo abren.
+// "Diseño digital" y "Posters" tienen un subdesplegable con sus secciones: la flechita de al lado lo abre y
+// el nombre lleva a la página.
 function MenuProyectos() {
   const [abierto, setAbierto] = useState(false)
+  const [expandido, setExpandido] = useState(null)
   const raiz = useRef(null)
   const cierre = useRef(0)
   const { pathname } = useLocation()
@@ -21,6 +43,11 @@ function MenuProyectos() {
 
   // Al cambiar de página se cierra.
   useEffect(() => setAbierto(false), [pathname])
+
+  // Al abrir el menú, el subdesplegable del proyecto en el que estás ya aparece abierto; al cerrarlo se pliegan.
+  useEffect(() => {
+    setExpandido(abierto ? (PROYECTOS.find((p) => p.hijos && pathname.startsWith(p.to))?.to ?? null) : null)
+  }, [abierto, pathname])
 
   useEffect(() => {
     if (!abierto) return
@@ -80,11 +107,36 @@ function MenuProyectos() {
               {t('Ver todos', 'View all')}
             </Link>
           </li>
-          {PROYECTOS.map(({ to, es, en }) => (
-            <li key={to}>
-              <Link to={to} aria-current={pathname.startsWith(to) ? 'page' : undefined}>
-                {t(es, en)}
-              </Link>
+          {PROYECTOS.map(({ to, es, en, hijos }) => (
+            <li key={to} className="nav__menu-item">
+              <div className="nav__menu-fila">
+                <Link to={to} aria-current={pathname.startsWith(to) ? 'page' : undefined}>
+                  {t(es, en)}
+                </Link>
+                {hijos && (
+                  <button
+                    type="button"
+                    className={`nav__menu-mas ${expandido === to ? 'abierto' : ''}`}
+                    aria-expanded={expandido === to}
+                    aria-controls={`submenu-${to.slice(1)}`}
+                    aria-label={t(`Ver las secciones de ${es}`, `Show the ${en} sections`)}
+                    onClick={() => setExpandido((e) => (e === to ? null : to))}
+                  >
+                    <svg viewBox="0 0 12 8" aria-hidden="true">
+                      <path d="m1 1.5 5 5 5-5" />
+                    </svg>
+                  </button>
+                )}
+              </div>
+              {hijos && expandido === to && (
+                <ul className="nav__submenu" id={`submenu-${to.slice(1)}`}>
+                  {hijos.map((h) => (
+                    <li key={h.to}>
+                      <Link to={h.to}>{t(h.es, h.en)}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>

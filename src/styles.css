@@ -237,6 +237,69 @@ ul {
   font-weight: 700;
 }
 
+/* Fila de un proyecto con subdesplegable: el nombre (link) y la flechita que abre sus secciones. */
+.nav__menu-fila {
+  display: flex;
+  align-items: center;
+}
+
+.nav__menu-fila > a {
+  flex: 1;
+}
+
+.nav__menu-mas {
+  display: grid;
+  place-items: center;
+  width: 34u;
+  height: 34u;
+  min-width: 28px;
+  min-height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 6u;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.nav__menu-mas svg {
+  width: 12u;
+  height: 8u;
+  min-width: 9px;
+  min-height: 6px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.25s ease;
+}
+
+.nav__menu-mas.abierto svg {
+  transform: rotate(180deg);
+}
+
+.nav__menu-mas:hover,
+.nav__menu-mas:focus-visible {
+  background: var(--rosa);
+  outline: none;
+}
+
+/* Secciones de adentro: sangradas, con una línea a la izquierda. */
+.nav__submenu {
+  margin: 2u 0 6u 16u;
+  padding: 0 0 0 10u;
+  list-style: none;
+  border-left: 2px solid rgba(17, 17, 17, 0.18);
+  animation: nav-menu-entra 0.2s ease-out both;
+}
+
+.nav__submenu a {
+  padding: 7u 12u;
+  font-size: 15.5u;
+}
+
 .nav__menu-todos {
   margin-bottom: 4u;
   border-bottom: 1px solid rgba(17, 17, 17, 0.18);
@@ -487,7 +550,7 @@ ul {
 .footer__col h2 {
   margin: 12u 0 22u;
   font-size: 18u;
-  font-style: italic;
+  font-style: normal;
   font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -556,7 +619,7 @@ ul {
   border-top: 1px solid var(--linea);
   border-bottom: 1px solid var(--linea);
   font-size: 18u;
-  font-style: italic;
+  font-style: normal;
   font-weight: 300;
 }
 
@@ -848,6 +911,34 @@ ul {
 .sobre__col {
   padding-top: 36u;
   padding-bottom: 36u;
+  /* Las tres columnas comparten las mismas filas (título / contenido / título / contenido), así que los
+     títulos y el comienzo de cada bloque quedan alineados de una columna a la otra. */
+  display: grid;
+  grid-template-rows: 27u 112u 22u auto;
+  align-content: start;
+  row-gap: 14u;
+}
+
+/* Las primeras líneas de cada bloque quedan centradas a la misma altura (cada lista tiene su interlineado). */
+.sobre__bloque {
+  padding-top: 1.5u;
+}
+
+.sobre__col--educacion .dato--plano {
+  padding-top: 7.5u;
+}
+
+/* Las listas de habilidades y los datos de contacto tienen el mismo paso entre renglones (34u), así que sus
+   filas coinciden. */
+.sobre__fila--datos .lista-doble {
+  align-content: start;
+  line-height: 34u;
+}
+
+/* Títulos de la fila de datos: del mismo tamaño y siempre en un solo renglón. */
+.sobre__fila--datos h3 {
+  font-size: 27u;
+  white-space: nowrap;
 }
 
 .sobre__col--educacion {
@@ -868,31 +959,28 @@ ul {
 }
 
 .sobre__col--educacion .dato {
-  margin-top: 4u;
+  margin-top: 0;
   font-size: 14.5u;
-  line-height: 13u;
+  line-height: 14u;
 }
 
 .sobre__col--educacion .dato strong {
   display: block;
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: 19u;
-  line-height: 1.05;
+  margin-bottom: -4u; /* la descripción queda cerca del subtítulo, sin tocarlo */
+  font-family: var(--texto);
+  font-weight: 700;
+  font-size: 15.5u;
+  line-height: 31u; /* igual que las filas de Habilidades: el subtítulo queda a la altura de sus renglones */
   letter-spacing: 0;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .sobre__col--educacion .dato + .dato {
-  margin-top: 14u;
-}
-
-.sobre__col--educacion h3:nth-of-type(2) {
-  margin-top: 10u;
+  margin-top: 4u; /* poca separación entre un estudio y el siguiente */
 }
 
 .sobre__col--educacion .dato--plano {
-  margin-top: 14u;
+  margin-top: 0;
   font-size: 15u;
   line-height: 19u;
 }
@@ -904,20 +992,17 @@ ul {
   margin-top: 0;
 }
 
+
 .lista-doble {
   display: grid;
   grid-template-columns: 172u 1fr;
-  margin: 17u 0 0;
+  margin: 0;
   font-size: 15u;
   line-height: 31u;
 }
 
-.sobre__col--habilidades h3 + .lista-doble + h3 {
-  margin-top: 17u;
-}
-
 .sobre__col--contacto .contacto-lista {
-  margin-top: 16u;
+  margin-top: 0;
 }
 
 .sobre__fila--experiencia {
@@ -2531,8 +2616,21 @@ ul {
   }
 
   .sobre__col {
+    display: block;
     padding: 28u 22u !important;
     border: 0 !important;
+  }
+
+  .sobre__fila--datos h3 {
+    font-size: 27u;
+    margin: 4u 0 12u;
+  }
+
+  .sobre__col .lista-doble,
+  .sobre__col .sobre__bloque,
+  .sobre__col--educacion .dato--plano,
+  .sobre__col--contacto .contacto-lista {
+    margin-bottom: 18u;
   }
 
   .sobre__col--educacion .dato {
@@ -2544,7 +2642,8 @@ ul {
     max-width: none;
   }
 
-  .lista-doble {
+  .lista-doble,
+  .sobre__fila--datos .lista-doble {
     font-size: 17u;
     line-height: 28u;
   }

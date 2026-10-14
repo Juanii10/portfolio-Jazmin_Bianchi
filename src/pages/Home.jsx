@@ -84,16 +84,16 @@ export default function Home() {
           <div className="sobre__fila sobre__fila--datos">
             <div className="sobre__col sobre__col--educacion">
               <h3>{t('Educación', 'Education')}</h3>
-              <p className="dato">
-                <strong>UADE (2022 - 2026)</strong>
-                <br />
-                {t('Licenciatura en Diseño Gráfico', "Bachelor's degree in Graphic Design")}
-              </p>
-              <p className="dato">
-                <strong>Colegio French (2016 - 2021)</strong>
-                <br />
-                {t('Graduada con bachiller con orientación en Economía', 'High school diploma with a focus on Economics')}
-              </p>
+              <div className="sobre__bloque">
+                <p className="dato">
+                  <strong>UADE (2022 - 2026)</strong>
+                  {t('Licenciatura en Diseño Gráfico', "Bachelor's degree in Graphic Design")}
+                </p>
+                <p className="dato">
+                  <strong>Colegio French (2016 - 2021)</strong>
+                  {t('Graduada con bachiller con orientación en Economía', 'High school diploma with a focus on Economics')}
+                </p>
+              </div>
               <h3>{t('Idiomas', 'Languages')}</h3>
               <p className="dato dato--plano">
                 {t('Inglés avanzado, Portugues basico, Español nativo', 'Advanced English, Basic Portuguese, Native Spanish')}
@@ -106,7 +106,7 @@ export default function Home() {
                 <li>Canva</li>
                 <li>Adobe Photoshop</li>
                 <li>Figma</li>
-                <li>Adobe Indisign</li>
+                <li>Adobe InDesign</li>
                 <li>CapCut</li>
               </ul>
               <h3>{t('Habilidades técnicas', 'Technical skills')}</h3>
@@ -120,6 +120,7 @@ export default function Home() {
             <div className="sobre__col sobre__col--contacto">
               <h3>{t('Contacto', 'Contact')}</h3>
               <Contacto />
+              <h3>{t('Sociales', 'Social')}</h3>
               <Sociales />
             </div>
           </div>

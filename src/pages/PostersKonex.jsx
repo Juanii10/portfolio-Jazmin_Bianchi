@@ -117,7 +117,7 @@ export default function PostersKonex() {
     <div className="pagina">
       <Nav compacto />
       <main>
-        <EscenarioAfiches fecha="*Noviembre 2025 *" afiches={afiches} />
+        <EscenarioAfiches fecha="*Noviembre 2025*" afiches={afiches} />
       </main>
       <Footer negro />
     </div>
