@@ -123,6 +123,196 @@ ul {
   width: 100%;
 }
 
+/* Grabaciones de pantalla del micrositio dentro de una computadora y un celular (ver
+   components/GrabacionWeb.jsx). El celular repite el marco de los reels. */
+.grabacion-web {
+  width: 100%;
+  background: #f4efe6 center / cover no-repeat;
+}
+
+.grabacion-web__escena {
+  position: relative;
+  width: 100%;
+  height: 560u;
+}
+
+.compu {
+  position: absolute;
+  top: 56u;
+  left: 50%;
+  width: 664u;
+  margin-left: -332u;
+}
+
+.compu__marco {
+  position: relative;
+  padding: 11u 11u 30u;
+  border-radius: 16u 16u 10u 10u;
+  background: #0b0b0d;
+  box-shadow: 0 0 0 2u #8c91a0, 0 24u 48u rgba(0, 0, 0, 0.55);
+}
+
+.compu__pantalla {
+  aspect-ratio: 1776 / 1080;
+  overflow: hidden;
+  border-radius: 3u;
+  background: #000;
+}
+
+.compu__pantalla video,
+.celu__pantalla video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.compu__camara {
+  position: absolute;
+  top: 4u;
+  left: 50%;
+  width: 4u;
+  height: 4u;
+  margin-left: -2u;
+  border-radius: 50%;
+  background: #3a3d46;
+}
+
+.compu__cuello {
+  width: 74u;
+  height: 62u;
+  margin: 0 auto;
+  background: linear-gradient(90deg, #8a8f9c, #c9ccd4 45%, #8a8f9c);
+  clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%);
+}
+
+.compu__base {
+  width: 190u;
+  height: 9u;
+  margin: 0 auto;
+  border-radius: 4u 4u 8u 8u;
+  background: linear-gradient(#c9ccd4, #7c8190);
+  box-shadow: 0 10u 18u rgba(0, 0, 0, 0.5);
+}
+
+/* Botón de play / pausa sobre cada pantalla: se ve cuando el video está en pausa y al pasar el mouse. */
+.compu__pantalla,
+.celu__pantalla {
+  position: relative;
+}
+
+.gw-play {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.gw-play__icono {
+  display: grid;
+  place-items: center;
+  width: 46u;
+  height: 46u;
+  border-radius: 50%;
+  background: rgba(11, 11, 13, 0.62);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.gw-play__icono svg {
+  width: 52%;
+  height: 52%;
+  fill: currentColor;
+}
+
+.celu .gw-play__icono {
+  width: 40u;
+  height: 40u;
+}
+
+.gw-play__ver-pausa,
+.en-pausa .gw-play__ver-play {
+  display: block;
+}
+
+.gw-play__ver-play,
+.en-pausa .gw-play__ver-pausa {
+  display: none;
+}
+
+.en-pausa .gw-play__icono,
+.gw-play:hover .gw-play__icono,
+.gw-play:focus-visible .gw-play__icono {
+  opacity: 1;
+}
+
+.gw-play:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -4px;
+}
+
+.celu {
+  position: absolute;
+  left: 50%;
+  bottom: 40u;
+  width: 188u;
+  height: 388u;
+  margin-left: -470u;
+  padding: 6u;
+  border-radius: 34u;
+  background: #0b0b0d;
+  box-shadow: 0 0 0 2u #8c91a0, 0 24u 48u rgba(0, 0, 0, 0.6);
+}
+
+.celu__pantalla {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 29u;
+  background: #000;
+}
+
+.celu__isla {
+  position: absolute;
+  top: 9u;
+  left: 50%;
+  width: 56u;
+  height: 17u;
+  margin-left: -28u;
+  border-radius: 999px;
+  background: #000;
+}
+
+/* Aparecer al scrollear (ver components/AparecerAlScroll.jsx): los bloques de más abajo entran con un
+   fundido y un leve ascenso. Usa `translate` (no `transform`) para no pisar movimientos propios de cada bloque. */
+.aparece {
+  opacity: 0;
+  translate: 0 28u;
+  transition: opacity 0.9s ease, translate 1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, translate;
+}
+
+.aparece.aparece--visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aparece {
+    opacity: 1;
+    translate: none;
+    transition: none;
+  }
+}
+
 /* ───────────── Nav ───────────── */
 
 .nav {

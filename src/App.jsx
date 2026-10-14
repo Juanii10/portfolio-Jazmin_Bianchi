@@ -8,6 +8,7 @@ import Posters from './pages/Posters.jsx'
 import PostersKonex from './pages/PostersKonex.jsx'
 import PostersBorges from './pages/PostersBorges.jsx'
 import PostersBestias from './pages/PostersBestias.jsx'
+import AparecerAlScroll from './components/AparecerAlScroll.jsx'
 
 // Al cambiar de ruta vuelve arriba, o baja hasta el ancla (#sobre-jaz, #proyectos, #contacto).
 function ScrollManager() {
@@ -29,6 +30,7 @@ export default function App() {
   return (
     <>
       <ScrollManager />
+      <AparecerAlScroll />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/papeleria" element={<Papeleria />} />

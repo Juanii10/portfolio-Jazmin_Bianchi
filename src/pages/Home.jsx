@@ -133,7 +133,7 @@ export default function Home() {
                 <p className="periodo">{fecha('(Agosto 2025 - Actualidad)')}</p>
                 <p>
                   {t(
-                    'Creación de contenido visual para redes sociales, desarrollo de piezas gráficas alineadas a la identidad de marca, buscando comunicar conceptos de forma estética, estratégica y atractiva.',
+                    'Creación de contenido visual para redes, desarrollo de piezas gráficas alineadas a la marca, buscando comunicar conceptos de forma estética, estratégica y atractiva.',
                     'Creation of visual content for social media and development of graphic pieces aligned with the brand identity, seeking to communicate concepts in an aesthetic, strategic and appealing way.',
                   )}
                 </p>
@@ -153,8 +153,8 @@ export default function Home() {
                 <p className="periodo periodo--normal">{t('(Emprendimiento personal)', '(Personal venture)')}</p>
                 <p>
                   {t(
-                    'Diseño y creación de papelería personalizada: tarjetas, flyers, álbumes, tarjetones y piezas gráficas adaptadas a cada cliente. (minaaa_dg)',
-                    'Design and creation of custom stationery: cards, flyers, albums, greeting cards and graphic pieces adapted to each client. (minaaa_dg)',
+                    'Diseño y creación de papelería personalizada asi como tarjetas, flyers, álbumes, tarjetones y piezas gráficas adaptadas a la identidad de cada cliente. *@minaaa_dg*',
+                    'Design and creation of custom stationery such as cards, flyers, albums, greeting cards and graphic pieces adapted to the identity of each client. *@minaaa_dg*',
                   )}
                 </p>
               </article>

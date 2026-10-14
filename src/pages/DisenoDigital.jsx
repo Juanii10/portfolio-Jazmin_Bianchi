@@ -2,6 +2,7 @@ import Nav from '../components/Nav.jsx'
 import Footer from '../components/Footer.jsx'
 import Hero from '../components/Hero.jsx'
 import Img from '../components/Img.jsx'
+import GrabacionWeb from '../components/GrabacionWeb.jsx'
 import Proyecto from '../components/Proyecto.jsx'
 import ReelsMarcas from '../components/ReelsMarcas.jsx'
 import { useIdioma } from '../idioma.jsx'
@@ -173,12 +174,12 @@ export default function DisenoDigital() {
                 </p>
               </Proyecto>
             </div>
-            <Img
-              className="a-ancho"
-              name="dig-micrositio-1"
+            <GrabacionWeb
+              clave="pagina"
+              fondo="dig-fondo-pagina"
               alt={t(
-                'Micrositio Sabores + Esquinas en monitor y celular: «Aventura semanal — Ruta de la yerba mate»',
-                'Sabores + Esquinas microsite on a monitor and phone: “Aventura semanal — Ruta de la yerba mate”',
+                'Grabación del micrositio Sabores + Esquinas: «Aventura semanal — Ruta de la yerba mate»',
+                'Screen recording of the Sabores + Esquinas microsite: “Aventura semanal — Ruta de la yerba mate”',
               )}
             />
 
@@ -192,12 +193,12 @@ export default function DisenoDigital() {
                 </p>
               </Proyecto>
             </div>
-            <Img
-              className="a-ancho"
-              name="dig-micrositio-2"
+            <GrabacionWeb
+              clave="articulo"
+              fondo="dig-fondo-articulo"
               alt={t(
-                'Artículo «Pacú al horno con salsa verde y puré de calabaza» en monitor y celular',
-                'Article “Pacú al horno con salsa verde y puré de calabaza” on a monitor and phone',
+                'Grabación de pantalla del artículo «Pacú al horno con salsa verde y puré de calabaza»',
+                'Screen recording of the article “Pacú al horno con salsa verde y puré de calabaza”',
               )}
             />
           </section>
