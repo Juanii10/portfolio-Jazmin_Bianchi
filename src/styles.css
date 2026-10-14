@@ -2450,29 +2450,12 @@ ul {
   transition-delay: calc(min(var(--i), 60) * 26ms + 0.6s);
 }
 
-/* Las frases destacadas se subrayan con un marcador rosa una vez escritas. */
-.konex__texto strong {
-  background: linear-gradient(transparent 58%, rgba(255, 155, 254, 0.38) 58%) no-repeat left / 0% 100%;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  transition: background-size 0.2s ease;
-}
-
-.konex__slide.activa .konex__texto strong {
-  background-size: 100% 100%;
-  transition: background-size 0.9s cubic-bezier(0.22, 1, 0.36, 1) 2s;
-}
-
-.konex__slide.activa .afiche__objetivo strong:nth-of-type(2) { transition-delay: 2.4s; }
-.konex__slide.activa .afiche__objetivo strong:nth-of-type(3) { transition-delay: 2.8s; }
-
 @media (prefers-reduced-motion: reduce) {
   .konex__slide,
   .konex__slide.activa,
   .konex__texto .proyecto__titulo,
   .konex__texto .proyecto__cliente,
-  .konex__texto .palabra,
-  .konex__texto strong {
+  .konex__texto .palabra {
     transition: none !important;
   }
 
@@ -2482,10 +2465,6 @@ ul {
     opacity: 1;
     transform: none;
     filter: none;
-  }
-
-  .konex__texto strong {
-    background-size: 100% 100%;
   }
 }
 

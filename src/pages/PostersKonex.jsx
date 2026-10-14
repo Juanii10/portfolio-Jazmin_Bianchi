@@ -73,14 +73,10 @@ export default function PostersKonex() {
             'Piece “Con el corazón roto, pero bailando un lunes. Estoy vibrando alto.”',
           ),
         },
-        {
-          name: 'konex-4',
-          alt: t('La pieza instalada como cartel frente al Abasto Shopping', 'The piece installed as a sign in front of Abasto Shopping'),
-        },
       ],
     },
     {
-      titulo: t('Afiche publicitario 1', 'Advertising poster 1'),
+      titulo: t('Afiche publicitario 2', 'Advertising poster 2'),
       nombre: 'Tu próxima parada',
       ubicacion: t('Estación Once', 'Once Station'),
       objetivo: t(
@@ -104,10 +100,6 @@ export default function PostersKonex() {
             'Pieza «Tu próxima parada está donde la energía se transforma»',
             'Piece “Tu próxima parada está donde la energía se transforma”',
           ),
-        },
-        {
-          name: 'konex-6',
-          alt: t('La pieza instalada como cartel en la zona de Estación Once', 'The piece installed as a sign in the Once Station area'),
         },
       ],
     },
