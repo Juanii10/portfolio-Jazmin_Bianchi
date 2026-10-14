@@ -59,7 +59,7 @@ export default function EscenarioAfiches({ fecha, afiches }) {
               <p className="proyecto__cliente">{a.nombre}</p>
               <p className="afiche__ubicacion">
                 <Palabras>
-                  <strong>{t('Ubicación:', 'Location:')}</strong> {a.ubicacion}
+                  <strong className="afiche__rotulo">{t('Ubicación:', 'Location:')}</strong> {a.ubicacion}
                 </Palabras>
               </p>
               <p className="afiche__objetivo">
