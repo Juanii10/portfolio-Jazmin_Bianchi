@@ -2953,7 +2953,7 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 24u;
-    padding-top: 56u;
+    padding-top: 36u;
     padding-bottom: 56u;
   }
 
@@ -2966,9 +2966,41 @@ ul {
     order: 2;
   }
 
-  /* La foto de Fiore va pegada a su paleta, con un respiro corto. */
-  .pap-fiore .a-ancho {
-    margin-top: 14u;
+  /* Menú Borges (mismo aire arriba que Sefina): el texto sube y la foto del tríptico no toca los costados. */
+  .pap-menu {
+    padding-top: 36u;
+  }
+
+  .split--menu .proyecto {
+    padding-top: 0;
+  }
+
+  .sec .pap-menu__triptico {
+    width: calc(100% - 44u) !important;
+    margin: 14u 22u 0 !important;
+  }
+
+  /* Fiore: el texto sube (menos aire arriba) y las muestras de color son menos altas. */
+  .split--fiore {
+    padding-top: 30u;
+  }
+
+  .split--fiore .proyecto {
+    padding-top: 0;
+  }
+
+  .paleta li {
+    height: 76u;
+  }
+
+  /* La foto de Fiore va pegada a su paleta, con un respiro corto, sin tocar los costados ni el borde de abajo. */
+  .sec.pap-fiore {
+    padding-bottom: 36u;
+  }
+
+  .sec.pap-fiore .a-ancho {
+    width: calc(100% - 44u) !important;
+    margin: 14u 22u 0 !important;
   }
 
 
