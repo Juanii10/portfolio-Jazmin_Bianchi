@@ -28,26 +28,34 @@ export default function HeroHome() {
   return (
     <section className="home-hero">
       <h1 className="sr-only">{t('Jazmín Bianchi, diseño gráfico. Portfolio 2026', 'Jazmín Bianchi, graphic design. Portfolio 2026')}</h1>
-      <Nombre />
-      {FOTOS.map((f) => (
-        <figure
-          key={f.id}
-          className={`foto foto--${f.id}`}
-          style={{ '--retraso': `${f.retraso}s` }}
-        >
-          <div className="foto__marco">
-            <img
-              src={`${import.meta.env.BASE_URL}img/hero/${f.archivo}.jpg`}
-              alt={t(...f.alt)}
-              loading="eager"
-              decoding="async"
-              draggable="false"
-            />
-          </div>
-          {f.etiqueta && <figcaption className="foto__etiqueta">{t(...f.etiqueta)}</figcaption>}
-        </figure>
-      ))}
-      <Nombre contorno />
+      <div className="home-hero__lienzo">
+        <Nombre />
+        {FOTOS.map((f) => (
+          <figure
+            key={f.id}
+            className={`foto foto--${f.id}`}
+            style={{ '--retraso': `${f.retraso}s` }}
+          >
+            <div className="foto__marco">
+              <img
+                src={`${import.meta.env.BASE_URL}img/hero/${f.archivo}.jpg`}
+                alt={t(...f.alt)}
+                loading="eager"
+                decoding="async"
+                draggable="false"
+              />
+            </div>
+            {f.etiqueta && <figcaption className="foto__etiqueta">{t(...f.etiqueta)}</figcaption>}
+          </figure>
+        ))}
+        <Nombre contorno />
+        <span className="hero-etiqueta hero-etiqueta--arriba" aria-hidden="true">
+          Portfolio 2026
+        </span>
+        <span className="hero-etiqueta hero-etiqueta--abajo" aria-hidden="true">
+          {t('Diseño Gráfico', 'Graphic Design')}
+        </span>
+      </div>
     </section>
   )
 }

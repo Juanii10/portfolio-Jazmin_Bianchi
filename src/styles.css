@@ -893,6 +893,17 @@ ul {
   --u: min(2px, calc(100cqw / 1274));
 }
 
+/* Etiquetas sueltas del hero: solo se usan en celular (en escritorio van pegadas a sus fotos). */
+.hero-etiqueta {
+  display: none;
+}
+
+/* Lienzo con las capas del hero: en escritorio llena el hero; en celular se centra en una pantalla más alta. */
+.home-hero__lienzo {
+  position: absolute;
+  inset: 0;
+}
+
 .hero-nombre {
   position: absolute;
   inset: 0;
@@ -2562,13 +2573,141 @@ ul {
   }
 
   /* La frase se reacomoda sola (sin los saltos de línea del diseño) para que se lea en pantallas chicas. */
+  /* En celular cada sección del home ocupa al menos una pantalla (descontando el header fijo), así
+     no se ven pedazos de varias a la vez. El contenido queda centrado. */
+  /* El hero se rearma en vertical sobre un lienzo de 520 x 980. Todo se mide en "u", y u se calcula para que
+     el lienzo entre justo en la pantalla (por ancho o por alto): la composición se agranda o achica entera,
+     sin deformar las fotos ni dejar huecos de más. */
+  .home-hero {
+    --u: min(calc(100cqw / 520), calc((100vh - 64px) / 980));
+    --u: min(calc(100cqw / 520), calc((100svh - 64px) / 980));
+    height: calc(100vh - 64px);
+    height: calc(100svh - 64px);
+    min-height: 980u;
+  }
+
+  .home-hero__lienzo {
+    inset: auto;
+    top: 50%;
+    left: 50%;
+    width: 520u;
+    height: 980u;
+    translate: -50% -50%;
+  }
+
+  /* Nombre grande y centrado, con una fila de fotos arriba y dos abajo. */
+  .hero-nombre {
+    font-size: 126u;
+  }
+
+  .hero-nombre--contorno {
+    -webkit-text-stroke-width: 2.2u;
+  }
+
+  .hero-nombre__linea--1,
+  .hero-nombre__linea--2 {
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-nombre__linea--1 {
+    top: 267u;
+  }
+
+  .hero-nombre__linea--2 {
+    top: 367u;
+  }
+
+  /* Etiquetas rosas: "Portfolio 2026" en el hueco que deja la "J" (más alta que las demás letras), entre ella y la foto de la derecha; "Diseño Gráfico" justo debajo, a la derecha. */
+  .foto__etiqueta {
+    display: none;
+  }
+
+  .hero-etiqueta {
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    display: block;
+    padding: 0 8u;
+    background: var(--rosa);
+    color: #000;
+    font: 17.3u/24u var(--texto);
+    white-space: nowrap;
+    translate: -50% 0;
+    animation: foto-aparece 0.45s ease-out var(--retraso, 0s) backwards;
+  }
+
+  .hero-etiqueta--arriba {
+    --retraso: 1.35s;
+    top: 271u;
+    left: 122u;
+    translate: none;
+  }
+
+  .hero-etiqueta--abajo {
+    --retraso: 1.6s;
+    top: 481u;
+    left: auto;
+    right: 34u;
+    translate: none;
+  }
+
+  /* Seis fotos del mismo tamaño, en dos columnas y tres filas bien alineadas. Entre las dos filas de abajo
+     hay el mismo espacio (8u) que entre las dos columnas. */
+  .foto--camino,
+  .foto--mariposa,
+  .foto--tortuga,
+  .foto--uade,
+  .foto--nieve,
+  .foto--retrato {
+    width: 226u;
+    height: 170u;
+  }
+
+  .foto--camino,
+  .foto--tortuga,
+  .foto--nieve {
+    left: 30u;
+  }
+
+  .foto--mariposa,
+  .foto--uade,
+  .foto--retrato {
+    left: 264u;
+  }
+
+  .foto--camino,
+  .foto--mariposa {
+    top: 79u;
+  }
+
+  .foto--tortuga,
+  .foto--uade {
+    top: 553u;
+  }
+
+  .foto--nieve,
+  .foto--retrato {
+    top: 731u;
+  }
+
   .home-frase {
+    display: flex;
+    align-items: center;
     height: auto;
-    min-height: 420u;
+    min-height: calc(100vh - 64px);
+    min-height: calc(100svh - 64px);
+  }
+
+  .sobre {
+    min-height: calc(100vh - 64px);
+    min-height: calc(100svh - 64px);
   }
 
   .home-frase__texto {
-    padding: 100u 28u 70u;
+    width: 100%;
+    padding: 56px 28u;
     font-size: 23u;
     line-height: 30u;
   }
@@ -3002,6 +3141,11 @@ ul {
   }
 
   .proyectos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(100vh - 64px);
+    min-height: calc(100svh - 64px);
     padding-bottom: 50u;
   }
 
