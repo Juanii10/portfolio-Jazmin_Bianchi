@@ -2,6 +2,7 @@ import Nav from '../components/Nav.jsx'
 import Footer from '../components/Footer.jsx'
 import Hero from '../components/Hero.jsx'
 import Img from '../components/Img.jsx'
+import Carrusel from '../components/Carrusel.jsx'
 import Proyecto from '../components/Proyecto.jsx'
 import { useIdioma } from '../idioma.jsx'
 
@@ -42,6 +43,11 @@ export default function Papeleria() {
                 name="pap-raptor"
                 alt={t('Tarjetas personales de Raptor Autos, frente y dorso', 'Raptor Autos business cards, front and back')}
               />
+              {/* Frente y dorso, uno arriba del otro: es lo que se ve en celular. */}
+              <div className="pap-raptor__tarjetas-apiladas">
+                <Img name="pap-raptor-frente" alt={t('Frente de la tarjeta personal de Raptor Autos', 'Front of the Raptor Autos business card')} />
+                <Img name="pap-raptor-dorso" alt={t('Dorso de la tarjeta personal de Raptor Autos, con el QR', 'Back of the Raptor Autos business card, with the QR code')} />
+              </div>
             </div>
             <Img
               className="pap-raptor__fotos"
@@ -50,6 +56,18 @@ export default function Papeleria() {
                 'Tarjetas de Raptor Autos en contexto: sobre una mesa, entregadas en mano y dorso con QR',
                 'Raptor Autos cards in context: on a table, handed over, and the back with a QR code',
               )}
+            />
+            {/* Las mismas tres fotos, en un carrusel: es lo que se ve en celular. */}
+            <Carrusel
+              clase="carrusel-tarjetas--fotos"
+              etiqueta={t('Tarjetas de Raptor Autos en contexto', 'Raptor Autos cards in context')}
+              items={[
+                { name: 'pap-raptor-foto-1', alt: t('Tarjetas de Raptor Autos apiladas sobre una mesa', 'Raptor Autos cards stacked on a table') },
+                { name: 'pap-raptor-foto-2', alt: t('Una tarjeta de Raptor Autos entregada en mano frente al local', 'A Raptor Autos card handed over in front of the store') },
+                { name: 'pap-raptor-foto-3', alt: t('Dorso de la tarjeta de Raptor Autos, con el QR y los contactos', 'Back of the Raptor Autos card, with the QR code and contacts') },
+              ]}
+              nombre={(it) => it.alt}
+              render={(it) => <Img name={it.name} alt={it.alt} />}
             />
           </section>
 
@@ -99,16 +117,15 @@ export default function Papeleria() {
                 ))}
               </ul>
             </div>
+            <Img
+              className="a-ancho"
+              name="pap-fiore-tarjetas"
+              alt={t(
+                'Cuatro tarjetas de mesa Fiore Banfield para el día de la madre',
+                "Four Fiore Banfield table cards for Mother's Day",
+              )}
+            />
           </section>
-
-          <Img
-            className="a-ancho"
-            name="pap-fiore-tarjetas"
-            alt={t(
-              'Cuatro tarjetas de mesa Fiore Banfield para el día de la madre',
-              "Four Fiore Banfield table cards for Mother's Day",
-            )}
-          />
 
           <section className="sec sec--crema pap-sefina">
             <Img

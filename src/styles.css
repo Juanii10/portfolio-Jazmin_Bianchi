@@ -542,6 +542,10 @@ ul {
   position: relative;
 }
 
+.hero__lienzo {
+  position: relative;
+}
+
 .hero img {
   width: 100%;
 }
@@ -1430,6 +1434,11 @@ ul {
   padding: 0 12u 10u;
   font-size: 13.5u;
   text-transform: uppercase;
+}
+
+/* Frente y dorso de las tarjetas de Raptor, uno arriba del otro: solo en celular. */
+.pap-raptor__tarjetas-apiladas {
+  display: none;
 }
 
 .pap-sefina {
@@ -2861,9 +2870,107 @@ ul {
     font-size: 12px;
   }
 
+  /* Las secciones de un proyecto miden lo que pide su contenido. La portada, en cambio, ocupa una pantalla
+     (descontando el header fijo): la imagen queda entera y el resto se llena con ella misma desenfocada. */
   .marco-hero {
-    padding: 0 10u 10u;
+    padding: 0;
   }
+
+  .hero {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    min-height: calc(100vh - 64px);
+    min-height: calc(100svh - 64px);
+    background: var(--oscuro);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: -30px;
+    background: var(--fondo) 12% 50% / cover no-repeat;
+    filter: blur(18px) brightness(0.75) saturate(1.1);
+  }
+
+  .hero__lienzo {
+    z-index: 1;
+    width: 100%;
+  }
+
+  /* La computadora y el celular de las grabaciones se achican para entrar en el ancho de la pantalla
+     (la escena mide unas 820u de ancho). */
+  .grabacion-web {
+    --u: calc(100cqw / 820);
+  }
+
+  .grabacion-web .celu {
+    margin-left: -385u;
+  }
+
+  /* El nombre del proyecto (cliente) es más grande que la fecha, no al revés. */
+  .proyecto__cliente {
+    font-size: 28u;
+  }
+
+  .proyecto__fecha {
+    font-size: 20u;
+  }
+
+  /* Raptor en celular: las dos tarjetas una arriba de la otra (sin ocupar todo el ancho) y las tres fotos en
+     un carrusel. */
+  .pap-raptor__tarjetas,
+  .pap-raptor__fotos {
+    display: none;
+  }
+
+  .pap-raptor__tarjetas-apiladas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12u;
+  }
+
+  .sec .pap-raptor__tarjetas-apiladas img {
+    width: 72% !important;
+  }
+
+  .carrusel-tarjetas.carrusel-tarjetas--fotos {
+    --w: 340u;
+    --h: 227u;
+  }
+
+  .carrusel-tarjetas--fotos .carrusel-tarjetas__item img {
+    display: block;
+    width: 100% !important;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10u;
+  }
+
+  /* Sefina: primero el texto y abajo la foto (en escritorio la foto va a la izquierda). */
+  .sec.pap-sefina {
+    display: flex;
+    flex-direction: column;
+    gap: 24u;
+    padding-top: 56u;
+    padding-bottom: 56u;
+  }
+
+  /* Texto y foto arrancan en el mismo borde izquierdo (el del resto de la página). */
+  .sec.pap-sefina .proyecto {
+    padding: 0;
+  }
+
+  .sec.pap-sefina img {
+    order: 2;
+  }
+
+  /* La foto de Fiore va pegada a su paleta, con un respiro corto. */
+  .pap-fiore .a-ancho {
+    margin-top: 14u;
+  }
+
 
   img {
     max-width: 100% !important;

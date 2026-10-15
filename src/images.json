@@ -170,5 +170,25 @@
   "card-digital": {
     "w": 2000,
     "h": 831
+  },
+  "pap-raptor-foto-1": {
+    "h": 934,
+    "w": 1400
+  },
+  "pap-raptor-foto-2": {
+    "h": 933,
+    "w": 1400
+  },
+  "pap-raptor-foto-3": {
+    "h": 933,
+    "w": 1400
+  },
+  "pap-raptor-frente": {
+    "h": 362,
+    "w": 659
+  },
+  "pap-raptor-dorso": {
+    "h": 361,
+    "w": 664
   }
 }
