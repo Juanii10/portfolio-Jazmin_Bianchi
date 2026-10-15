@@ -7,7 +7,7 @@ import sizes from '../images.json'
 // siguiente (la página "avanza" por debajo: cada afiche ocupa una pantalla de scroll). El texto es
 // chico y la imagen es la protagonista; las palabras se escriben una a una al activarse cada afiche.
 //
-// afiches: [{ titulo, nombre, ubicacion, objetivo, imagenes: [{ name, alt }] }]
+// afiches: [{ titulo, nombre, ubicacion (opcional), objetivo, imagenes: [{ name, alt }] }]
 export default function EscenarioAfiches({ fecha, afiches }) {
   const { t, fecha: traducirFecha } = useIdioma()
   const ref = useRef(null)
@@ -57,13 +57,15 @@ export default function EscenarioAfiches({ fecha, afiches }) {
             <div className="konex__texto">
               <h2 className="proyecto__titulo">[[ {a.titulo}</h2>
               <p className="proyecto__cliente">{a.nombre}</p>
-              <p className="afiche__ubicacion">
-                <Palabras>
-                  <strong className="afiche__rotulo">{t('Ubicación:', 'Location:')}</strong> {a.ubicacion}
-                </Palabras>
-              </p>
+              {a.ubicacion && (
+                <p className="afiche__ubicacion">
+                  <Palabras>
+                    <strong className="afiche__rotulo">{t('Ubicación:', 'Location:')}</strong> {a.ubicacion}
+                  </Palabras>
+                </p>
+              )}
               <p className="afiche__objetivo">
-                <Palabras desde={4}>{a.objetivo}</Palabras>
+                <Palabras desde={a.ubicacion ? 4 : 0}>{a.objetivo}</Palabras>
               </p>
             </div>
             <div className="konex__imgs">

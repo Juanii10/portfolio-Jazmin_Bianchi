@@ -13,7 +13,7 @@ export default function PostersBestias() {
 
         <section className="afiche afiche--1">
           <div className="afiche__texto">
-            <h2 className="proyecto__titulo">[[ {t('Afiche y poster publicitario', 'Poster and advertising poster')}</h2>
+            <h2 className="proyecto__titulo">[[ {t('Afiches publicitarios', 'Advertising posters')}</h2>
             <p className="proyecto__cliente">Las Bestias</p>
             <p className="afiche__objetivo">
               {t(
