@@ -150,7 +150,7 @@ export default function Home() {
               </article>
               <article>
                 <h4>Mina</h4>
-                <p className="periodo periodo--normal">{t('(Emprendimiento personal)', '(Personal venture)')}</p>
+                <p className="periodo">{t('(Emprendimiento personal)', '(Personal venture)')}</p>
                 <p>
                   {t(
                     'Diseño y creación de papelería personalizada asi como tarjetas, flyers, álbumes, tarjetones y piezas gráficas adaptadas a la identidad de cada cliente. *@minaaa_dg*',
