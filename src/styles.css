@@ -1339,6 +1339,11 @@ ul {
   opacity: 1;
 }
 
+/* Carrusel de tarjetas (solo celular): una tarjeta al centro, las vecinas asomando, flechas y puntitos. */
+.carrusel-tarjetas {
+  display: none;
+}
+
 /* ───────────── Papelería ───────────── */
 
 .pap-raptor {
@@ -3055,19 +3060,140 @@ ul {
     width: 100% !important;
   }
 
+  /* En celular la fila de tarjetas se reemplaza por un carrusel. */
   .posters-indice .tarjetas,
   .proyectos__tarjetas {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width: auto;
-    height: auto;
-    margin: 20u 22u 0;
-    gap: 14u;
+    display: none;
   }
 
-  .tarjeta {
-    height: auto;
-    aspect-ratio: 258 / 380;
+  .carrusel-tarjetas {
+    position: relative;
+    display: block;
+    --w: 268u;
+    --h: 400u;
+    height: calc(var(--h) + 44u);
+    margin: 24u 0 0;
+    overflow: hidden;
+    perspective: 1300u;
+    perspective-origin: 50% 50%;
+    outline-offset: -4px;
+    touch-action: pan-y;
+    user-select: none;
+  }
+
+  .carrusel-tarjetas__item {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: var(--w);
+    height: var(--h);
+    margin: 0 0 0 calc(var(--w) / -2);
+    transition: transform 0.75s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.75s ease;
+  }
+
+  .carrusel-tarjetas__item .tarjeta {
+    height: 100%;
+  }
+
+  /* Las tarjetas conservan la imagen desenfocada de siempre (ver .tarjeta img). */
+  .carrusel-tarjetas__item--centro {
+    z-index: 3;
+  }
+
+  .carrusel-tarjetas__item--izq,
+  .carrusel-tarjetas__item--fuera-izq {
+    z-index: 2;
+    transform: translateX(calc(var(--w) * -1.016)) rotateY(24deg) scale(0.94);
+  }
+
+  .carrusel-tarjetas__item--der,
+  .carrusel-tarjetas__item--fuera-der {
+    z-index: 2;
+    transform: translateX(calc(var(--w) * 1.016)) rotateY(-24deg) scale(0.94);
+  }
+
+  .carrusel-tarjetas__item--fuera-izq,
+  .carrusel-tarjetas__item--fuera-der {
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .carrusel-tarjetas__puntos {
+    position: absolute;
+    z-index: 5;
+    bottom: 4u;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 12u;
+  }
+
+  .carrusel-tarjetas__puntos button {
+    width: 9u;
+    height: 9u;
+    min-width: 8px;
+    min-height: 8px;
+    padding: 0;
+    border: 1px solid var(--crema);
+    border-radius: 50%;
+    background: transparent;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+  }
+
+  .carrusel-tarjetas__puntos button.activo {
+    border-color: var(--rosa);
+    background: var(--rosa);
+    opacity: 1;
+  }
+
+  .carrusel-tarjetas__flecha {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    width: 60u;
+    height: 60u;
+    min-width: 36px;
+    min-height: 36px;
+    margin-top: -30u;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #000;
+    cursor: pointer;
+  }
+
+  .carrusel-tarjetas__flecha--izq {
+    left: calc(50% - var(--w) / 2 - 30u);
+  }
+
+  .carrusel-tarjetas__flecha--der {
+    left: calc(50% + var(--w) / 2 - 30u);
+  }
+
+  .carrusel-tarjetas__flecha svg {
+    width: 40%;
+    height: 40%;
+    fill: none;
+    stroke: var(--crema);
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .carrusel-tarjetas__puntos button:focus-visible,
+  .carrusel-tarjetas__flecha:focus-visible {
+    outline: 2px solid var(--rosa);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .carrusel-tarjetas__item {
+      transition: none;
+    }
   }
 
   .tarjeta__nombre {

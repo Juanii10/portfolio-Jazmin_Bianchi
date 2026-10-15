@@ -1,7 +1,7 @@
 import Nav from '../components/Nav.jsx'
 import Footer, { Contacto, Sociales } from '../components/Footer.jsx'
 import HeroHome from '../components/HeroHome.jsx'
-import TarjetaProyecto from '../components/TarjetaProyecto.jsx'
+import Tarjetas from '../components/Tarjetas.jsx'
 import { useIdioma } from '../idioma.jsx'
 
 export default function Home() {
@@ -164,12 +164,15 @@ export default function Home() {
 
         <section className="proyectos lineas" id="proyectos">
           <h2 className="proyectos__titulo">{t('Proyectos', 'Projects')}</h2>
-          <div className="tarjetas proyectos__tarjetas">
-            <TarjetaProyecto to="/papeleria" imagen="pap-sefina" nombre={t('Papelería', 'Stationery')} />
-            <TarjetaProyecto to="/experimentacion" imagen="exp-grande" nombre={t('Experimentación', 'Experimentation')} />
-            <TarjetaProyecto to="/diseno-digital" imagen="card-digital" nombre={t('Diseño digital', 'Digital design')} />
-            <TarjetaProyecto to="/posters" imagen="bestias-2" nombre="Posters" />
-          </div>
+          <Tarjetas
+            clase="proyectos__tarjetas"
+            items={[
+              { to: '/papeleria', imagen: 'pap-sefina', nombre: t('Papelería', 'Stationery') },
+              { to: '/experimentacion', imagen: 'exp-grande', nombre: t('Experimentación', 'Experimentation') },
+              { to: '/diseno-digital', imagen: 'card-digital', nombre: t('Diseño digital', 'Digital design') },
+              { to: '/posters', imagen: 'bestias-2', nombre: 'Posters' },
+            ]}
+          />
         </section>
       </main>
       <Footer />
