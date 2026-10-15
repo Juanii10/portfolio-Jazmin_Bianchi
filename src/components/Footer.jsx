@@ -156,7 +156,7 @@ export default function Footer({ negro = false }) {
         <div className="footer__col footer__col--nav">
           <h2>{t('Navegar', 'Browse')}</h2>
           <Link to="/">{t('Inicio', 'Home')}</Link>
-          <Link to="/#sobre-jaz">{t('Sobre Jaz', 'About Jaz')}</Link>
+          <Link to="/#sobre-jaz">{t('Sobre mi', 'About me')}</Link>
           <Link to="/#proyectos">{t('Proyectos', 'Projects')}</Link>
         </div>
         <div className="footer__col footer__col--contacto">

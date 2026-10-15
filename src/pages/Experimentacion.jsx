@@ -50,12 +50,19 @@ export default function Experimentacion() {
                   </p>
                 </Proyecto>
                 <Img
+                  className="exp-col-izq__entera"
                   name="exp-col-izq"
                   alt={t(
                     'Composiciones tipográficas: «Dije», «Complejo» y tornillos con herramientas',
                     'Typographic compositions: “Dije”, “Complejo” and screws with tools',
                   )}
                 />
+                {/* Las mismas tres composiciones, armadas como collage: es lo que se ve en celular. */}
+                <div className="exp-col-izq__collage">
+                  <Img name="exp-col-izq-1" alt={t('Composición tipográfica «Dije»', 'Typographic composition “Dije”')} />
+                  <Img name="exp-col-izq-2" alt={t('Composición tipográfica «Complejo» en rojo', 'Typographic composition “Complejo” in red')} />
+                  <Img name="exp-col-izq-3" alt={t('Letras armadas con tornillos y herramientas', 'Letters built with screws and tools')} />
+                </div>
               </div>
               <div className="exp-mosaico__der">
                 <Img

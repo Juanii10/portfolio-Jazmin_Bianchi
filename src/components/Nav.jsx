@@ -191,7 +191,7 @@ export default function Nav({ conContacto = true, compacto = false }) {
         onClick={(e) => e.target.closest('a') && setMenuAbierto(false)}
       >
         <Link to="/">{t('Inicio', 'Home')}</Link>
-        <Link to="/#sobre-jaz">{t('Sobre Jaz', 'About Jaz')}</Link>
+        <Link to="/#sobre-jaz">{t('Sobre mi', 'About me')}</Link>
         <MenuProyectos />
         {conContacto && <a href="#contacto">{t('Contacto', 'Contact')}</a>}
       </nav>

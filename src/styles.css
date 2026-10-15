@@ -1682,6 +1682,11 @@ ul {
   width: 744u;
 }
 
+/* Las tres composiciones de la izquierda como collage: solo en celular (en escritorio va la imagen entera). */
+.exp-col-izq__collage {
+  display: none;
+}
+
 .exp-movimiento__izq {
   display: flex;
   flex-direction: column;
@@ -3086,14 +3091,97 @@ ul {
     margin-left: 0;
   }
 
+  /* Slider en formato celular: usa la escala del celular (como el resto de la página) en vez de la de
+     escritorio, así la foto central se ve grande y las vecinas asoman a los costados. */
   .exp-slider {
-    --u: min(2px, calc(100cqw / 1274));
-    margin-top: 20px;
+    --u: calc(100cqw / 520);
+    --w: 318u;
+    --h: 250u;
+    --zoom-foto: 1.3;
+    margin-top: 20u;
   }
 
   .exp-mosaico__izq,
   .exp-mosaico__der {
     padding-top: 20u;
+  }
+
+  /* Menos aire entre el collage de la izquierda y la imagen grande (el mismo que hay entre las fotos). */
+  .exp-mosaico > .exp-mosaico__der {
+    margin-top: 10u;
+    padding-top: 0;
+  }
+
+  .exp-mosaico__izq {
+    padding-bottom: 0;
+  }
+
+  /* Movimiento en juego: la frase disparadora va debajo de «Formas» y arriba de las dos fotos grandes, y mide lo que ocupa su texto. Para
+     reordenar, las columnas se "disuelven" (display: contents) y sus partes se acomodan en una sola columna. */
+  .exp-movimiento__grid {
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .exp-movimiento__izq,
+  .exp-movimiento__medio {
+    display: contents;
+  }
+
+  .exp-movimiento__izq .proyecto {
+    order: 1;
+  }
+
+  .exp-movimiento__izq img {
+    order: 2;
+  }
+
+  /* El espacio sobre la frase es el mismo que hay dentro de esa foto entre las fotos de «Texturas» y el rótulo
+     «Formas» (55 de los 778 px de ancho de la imagen). */
+  .exp-movimiento__medio .frase {
+    order: 3;
+    min-height: 0;
+    margin-top: calc((100cqw - 44u) * 55 / 778);
+  }
+
+  .exp-movimiento__medio img {
+    order: 4;
+  }
+
+  /* El mismo espacio entre la frase y las dos fotos grandes, y entre ellas (≈ el que hay dentro de las fotos). */
+  .exp-movimiento .exp-movimiento__medio img,
+  .exp-movimiento img.exp-movimiento__der {
+    margin-top: calc((100cqw - 44u) * 55 / 778) !important;
+  }
+
+  .exp-movimiento__der {
+    order: 5;
+  }
+
+  /* Collage de dos columnas parejas: a la izquierda «Dije» sobre «Complejo»; a la derecha, los tornillos,
+     que se recortan un poco a los costados para terminar a la misma altura. */
+  .exp-col-izq__entera {
+    display: none;
+  }
+
+  .exp-col-izq__collage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10u;
+    margin-top: 20u;
+  }
+
+  .exp-col-izq__collage img {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .exp-col-izq__collage img:nth-child(3) {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    height: 100%;
+    min-height: 0;
+    object-fit: cover;
   }
 
   .exp-movimiento__izq .proyecto,
@@ -3192,6 +3280,48 @@ ul {
 
   .afiche__imgs {
     align-items: stretch;
+  }
+
+  /* Las Bestias en celular: la fecha, la primera foto, el texto (con las mismas letras que Konex y Borges) y la
+     segunda foto, sin ocupar todo el ancho. Para reordenar, el bloque .afiche se "disuelve" (display: contents)
+     y sus partes se acomodan junto con el resto de la página. */
+  .afiches--bestias {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 36u;
+  }
+
+  .afiches--bestias .afiche {
+    display: contents;
+  }
+
+  .afiches--bestias .afiche__imgs {
+    order: 1;
+    padding: 14u 22u 0;
+  }
+
+  .afiches--bestias .afiche__texto {
+    order: 2;
+    padding: 20u 22u 6u !important;
+  }
+
+  .afiches--bestias > img.a-ancho {
+    order: 3;
+    width: calc(100% - 44u) !important;
+    margin: 14u 22u 0 !important;
+  }
+
+  .afiches--bestias .proyecto__titulo {
+    font-size: 26u;
+  }
+
+  .afiches--bestias .proyecto__cliente {
+    font-size: 16u;
+  }
+
+  .afiches--bestias .afiche__objetivo {
+    font-size: 14.5u;
+    line-height: 1.3;
   }
 
   .afiche__imgs img,
