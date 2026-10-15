@@ -510,6 +510,11 @@ ul {
   }
 }
 
+/* Botón de tres rayitas: solo se ve en pantallas angostas (ver más abajo). */
+.nav__hamburguesa {
+  display: none;
+}
+
 .nav__links a:hover {
   text-decoration: underline;
   text-underline-offset: 4u;
@@ -2490,6 +2495,26 @@ ul {
 .afiches--borges .afiche--2 { --pb: 59u; }
 .afiches--bestias .afiche--1 { --pb: 64u; }
 
+/* ───────────── Header fijo en tablet y celular ───────────── */
+
+/* El header queda a la vista al scrollear. Las anclas y el escenario fijo de los afiches dejan libre su alto. */
+@media (max-width: 1024px) {
+  html {
+    scroll-padding-top: calc(60 * min(2px, 100vw / 1274));
+  }
+
+  .nav {
+    position: sticky;
+    top: 0;
+  }
+
+  .konex__pin {
+    top: calc(60 * min(2px, 100vw / 1274));
+    height: calc(100vh - 60 * min(2px, 100vw / 1274));
+    height: calc(100svh - 60 * min(2px, 100vw / 1274));
+  }
+}
+
 /* ───────────── Mobile ───────────── */
 
 @media (max-width: 760px) {
@@ -2556,18 +2581,140 @@ ul {
     display: none;
   }
 
+  /* Alto fijo (64px) para que el escenario fijo y las anclas sepan cuánto dejar libre. */
+  html {
+    scroll-padding-top: 64px;
+  }
+
   .nav,
   .nav--compacto {
-    height: auto;
-    padding: 18u 20u;
-    gap: 12u;
-    flex-wrap: wrap;
+    height: 64px;
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .konex__pin {
+    top: 64px;
+    height: calc(100vh - 64px);
+    height: calc(100svh - 64px);
+  }
+
+  /* Menú de tres rayitas: los links pasan a un panel debajo del header. */
+  .nav__hamburguesa {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    margin-left: -6px;
+    padding: 0 6px;
+    border: 0;
+    background: transparent;
+    color: #111;
+    font: 500 17px var(--texto);
+    cursor: pointer;
+  }
+
+  .nav__rayitas {
+    display: grid;
+    gap: 5px;
+    width: 24px;
+  }
+
+  .nav__rayitas span {
+    display: block;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+
+  .nav__hamburguesa.abierto .nav__rayitas span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .nav__hamburguesa.abierto .nav__rayitas span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav__hamburguesa.abierto .nav__rayitas span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
   }
 
   .nav__links {
-    gap: 22u;
-    font-size: 20u;
-    flex-wrap: wrap;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 70;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    padding: 6px 16px 14px;
+    border-top: 1px solid rgba(17, 17, 17, 0.2);
+    background: var(--crema);
+    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.3);
+    font-size: 19px;
+  }
+
+  .nav__links.abierto {
+    display: flex;
+  }
+
+  .nav__links > a,
+  .nav__proyectos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 46px;
+    padding: 0;
+    text-align: left;
+  }
+
+  .nav__links > a + a,
+  .nav__links > a + .nav__item,
+  .nav__item + a {
+    border-top: 1px solid rgba(17, 17, 17, 0.12);
+  }
+
+  .nav__item {
+    border-top: 1px solid rgba(17, 17, 17, 0.12);
+  }
+
+  /* "Proyectos" se despliega dentro del mismo panel, sin globo flotante. */
+  .nav__menu {
+    position: static;
+    min-width: 0;
+    margin: 0 0 6px;
+    padding: 0 0 0 12px;
+    border: 0;
+    border-left: 2px solid rgba(17, 17, 17, 0.25);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    animation: none;
+  }
+
+  .nav__menu::before {
+    display: none;
+  }
+
+  .nav__menu a {
+    min-height: 40px;
+    padding: 9px 8px;
+    font-size: 17px;
+    white-space: normal;
+  }
+
+  .nav__menu-mas {
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  .nav__lang {
+    width: 78px;
+    height: 32px;
+    font-size: 12px;
   }
 
   .marco-hero {

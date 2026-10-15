@@ -51,7 +51,7 @@ export default function Home() {
         <section className="sobre lineas" id="sobre-jaz">
           <div className="sobre__fila sobre__fila--titulo">
             <h2 className="sobre__titulo">
-              <span className="rosa">[</span> {t('SOBRE JAZ', 'ABOUT JAZ')} <span className="rosa">].</span>
+              <span className="rosa">[</span> {t('SOBRE MI', 'ABOUT ME')} <span className="rosa">].</span>
             </h2>
             <div className="sobre__intro">
               {t(

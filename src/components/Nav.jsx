@@ -145,11 +145,51 @@ function MenuProyectos() {
   )
 }
 
+// En pantallas angostas los links se esconden detrás de un botón de tres rayitas ("Menú") que los abre en un
+// panel debajo del header. Se cierra al elegir una opción, al cambiar de página, con Esc o con un clic afuera.
 export default function Nav({ conContacto = true, compacto = false }) {
   const { lang, alternar, t } = useIdioma()
+  const [menuAbierto, setMenuAbierto] = useState(false)
+  const cabecera = useRef(null)
+  const { pathname, hash } = useLocation()
+
+  useEffect(() => setMenuAbierto(false), [pathname, hash])
+
+  useEffect(() => {
+    if (!menuAbierto) return
+    const cerrar = (e) => {
+      if (e.type === 'keydown' ? e.key === 'Escape' : !cabecera.current?.contains(e.target)) setMenuAbierto(false)
+    }
+    document.addEventListener('mousedown', cerrar)
+    document.addEventListener('keydown', cerrar)
+    return () => {
+      document.removeEventListener('mousedown', cerrar)
+      document.removeEventListener('keydown', cerrar)
+    }
+  }, [menuAbierto])
+
   return (
-    <header className={compacto ? 'nav nav--compacto' : 'nav'}>
-      <nav className="nav__links" aria-label={t('Principal', 'Main')}>
+    <header className={compacto ? 'nav nav--compacto' : 'nav'} ref={cabecera}>
+      <button
+        type="button"
+        className={`nav__hamburguesa ${menuAbierto ? 'abierto' : ''}`}
+        aria-expanded={menuAbierto}
+        aria-controls="menu-principal"
+        onClick={() => setMenuAbierto((a) => !a)}
+      >
+        <span className="nav__rayitas" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </span>
+        {t('Menú', 'Menu')}
+      </button>
+      <nav
+        className={`nav__links ${menuAbierto ? 'abierto' : ''}`}
+        id="menu-principal"
+        aria-label={t('Principal', 'Main')}
+        onClick={(e) => e.target.closest('a') && setMenuAbierto(false)}
+      >
         <Link to="/">{t('Inicio', 'Home')}</Link>
         <Link to="/#sobre-jaz">{t('Sobre Jaz', 'About Jaz')}</Link>
         <MenuProyectos />
