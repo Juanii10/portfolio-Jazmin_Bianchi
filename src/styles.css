@@ -3578,10 +3578,11 @@ ul {
     font-size: 24u;
   }
 
+  /* Una sola línea: el «].» no puede caer abajo. */
   .sobre__titulo {
     padding: 36u 22u;
-    font-size: 64u;
-    white-space: normal;
+    font-size: 50u;
+    white-space: nowrap;
   }
 
   .sobre__intro {
