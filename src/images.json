@@ -108,8 +108,8 @@
     "w": 2320
   },
   "dig-banner-comardex": {
-    "h": 1012,
-    "w": 2320
+    "h": 788,
+    "w": 1997
   },
   "dig-uikit": {
     "h": 760,
@@ -202,6 +202,14 @@
   "exp-col-izq-3": {
     "h": 1072,
     "w": 794
+  },
+  "m-dig-visionar-celu": {
+    "h": 1200,
+    "w": 900
+  },
+  "m-dig-caterina-celu": {
+    "h": 1200,
+    "w": 900
   },
   "m-pap-hero": {
     "h": 1680,
