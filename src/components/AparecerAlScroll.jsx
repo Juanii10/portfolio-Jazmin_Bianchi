@@ -24,6 +24,7 @@ const ANIMAR = [
   '.posters-indice .tarjetas',
   '.footer__main',
   '.grabacion-web',
+  '.dig-bebidas__fig',
   'main img',
 ].join(',')
 
@@ -56,6 +57,8 @@ export default function AparecerAlScroll() {
     const espera = setTimeout(() => {
       document.querySelectorAll(ANIMAR).forEach((el) => {
         if (el.dataset.aparece || el.closest(EXCLUIR)) return
+        // La grilla de Bebidas y el celular que asoma arriba aparecen juntos (se anima la figura entera).
+        if (el.matches('.dig-bebidas__fig img')) return
         el.dataset.aparece = '1'
         const r = el.getBoundingClientRect()
         // Ya se ve: se deja como está. La foto de fondo de la frase asoma apenas debajo del hero, así que cuenta

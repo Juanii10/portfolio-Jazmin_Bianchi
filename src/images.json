@@ -75,10 +75,6 @@
     "h": 1822,
     "w": 1200
   },
-  "dig-visionar-foto": {
-    "h": 1613,
-    "w": 900
-  },
   "dig-visionar-stories": {
     "h": 736,
     "w": 2332
@@ -98,10 +94,6 @@
   "dig-caterina-grilla": {
     "h": 1836,
     "w": 1206
-  },
-  "dig-caterina-foto": {
-    "h": 1613,
-    "w": 900
   },
   "dig-banner-mueblin": {
     "h": 1010,
@@ -218,5 +210,13 @@
   "m-pos-hero": {
     "h": 1680,
     "w": 920
+  },
+  "dig-visionar-foto-hd": {
+    "h": 2000,
+    "w": 1116
+  },
+  "dig-caterina-foto-hd": {
+    "h": 2000,
+    "w": 1116
   }
 }
