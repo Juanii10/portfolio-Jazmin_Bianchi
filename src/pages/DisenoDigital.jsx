@@ -84,7 +84,7 @@ export default function DisenoDigital() {
                 name="dig-visionar-grilla"
                 alt={t('Nueve publicaciones de Visionar Coaching en violeta y rosa', 'Nine Visionar Coaching posts in violet and pink')}
               />
-              <Img className="dig-redes__celu" name="dig-visionar-celu" alt={t('Perfil de Instagram visionar.coaching en un celular', 'Instagram profile visionar.coaching on a phone')} />
+              <Img className="dig-redes__celu" name="dig-visionar-foto" alt={t('Perfil de Instagram visionar.coaching en un celular', 'Instagram profile visionar.coaching on a phone')} />
             </div>
             <Img
               className="a-ancho dig-redes__stories"
@@ -131,7 +131,7 @@ export default function DisenoDigital() {
                 name="dig-caterina-grilla"
                 alt={t('Publicaciones de Caterina Beauty Studio', 'Caterina Beauty Studio posts')}
               />
-              <Img className="dig-redes__celu" name="dig-caterina-celu" alt={t('Perfil de Instagram caterina.beautystudio en un celular', 'Instagram profile caterina.beautystudio on a phone')} />
+              <Img className="dig-redes__celu" name="dig-caterina-foto" alt={t('Perfil de Instagram caterina.beautystudio en un celular', 'Instagram profile caterina.beautystudio on a phone')} />
             </div>
 
             <h2 className="proyecto__titulo dig-banner__titulo" id="banners-web">[[ {t('Banner Web', 'Web Banner')}</h2>
