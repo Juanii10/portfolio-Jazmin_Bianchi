@@ -145,7 +145,7 @@ export default function DisenoDigital() {
             />
             <Img
               className="a-ancho dig-banner dig-banner--2"
-              name="dig-banner-comardex"
+              name="dig-banner-comardex-2"
               alt={t('Comardex 2025: banner web «Productos 100% originales»', 'Comardex 2025: web banner “Productos 100% originales”')}
             />
           </section>
