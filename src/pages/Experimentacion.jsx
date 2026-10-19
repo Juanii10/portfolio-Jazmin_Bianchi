@@ -17,6 +17,16 @@ export default function Experimentacion() {
             imagen="exp-hero"
             titulo={t('Experimentación — Donde me dejo ser', 'Experimentation — Where I let myself be')}
             flecha={[50.06, 66.74]}
+            movil={{
+              imagen: 'm-exp-hero',
+              titulo: [['Experimentación', 'Experimentation']],
+              sub: ['[ Donde me dejo ser ]', '[ Where I let myself be ]'],
+              // Texto centrado en la tarjeta, bajo la polaroid «SER LIBRE» (si le roza el borde de abajo no pasa nada).
+              caja: [48, 800, 873, 982],
+              tam: 80,
+              tamSub: 32,
+              flecha: [460.5, 1032, 92],
+            }}
           />
         </div>
 

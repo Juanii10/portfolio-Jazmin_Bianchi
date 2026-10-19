@@ -44,6 +44,24 @@ export default function DisenoDigital() {
             imagen="dig-hero"
             titulo={t('Diseño digital — Donde pienso, creo y resuelvo', 'Digital design — Where I think, create and solve')}
             flecha={[49.98, 85.64]}
+            movil={{
+              imagen: 'm-dig-hero',
+              titulo: [
+                ['Diseño', 'Digital'],
+                ['Digital', 'design'],
+              ],
+              sub: ['[ Donde pienso, creo y resuelvo ]', '[ Where I think, create and solve ]'],
+              caja: [128, 563, 784, 962],
+              tam: 118,
+              tamSub: 33,
+              flecha: [461, 1144, 94],
+              enlaces: [
+                { href: '#piezas-para-redes', etiqueta: ['Piezas para redes', 'Social media pieces'], caja: [93, 385, 390, 432] },
+                { href: '#banners-web', etiqueta: ['Banners Web', 'Web Banners'], caja: [516, 384, 812, 432] },
+                { href: '#edicion-de-reels', etiqueta: ['Edición de reels', 'Reel editing'], caja: [95, 1282, 390, 1329] },
+                { href: '#diseno-web', etiqueta: ['Diseño web', 'Web design'], caja: [519, 1283, 807, 1328] },
+              ],
+            }}
             enlaces={ENLACES.map(({ es, en, ...resto }) => ({ etiqueta: t(es, en), ...resto }))}
           />
         </div>

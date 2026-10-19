@@ -24,6 +24,14 @@ export default function Papeleria() {
             imagen="pap-hero"
             titulo={t('Papelería — Mi lugar favorito', 'Stationery — My favorite place')}
             flecha={[49.98, 80.09]}
+            movil={{
+              imagen: 'm-pap-hero',
+              titulo: [['Papelería', 'Stationery']],
+              sub: ['[ Mi lugar favorito ]', '[ My favorite place ]'],
+              caja: [68, 793, 866, 1034],
+              tam: 150,
+              flecha: [452, 1083, 92],
+            }}
           />
         </div>
 

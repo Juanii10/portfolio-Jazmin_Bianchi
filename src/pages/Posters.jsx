@@ -11,7 +11,20 @@ export default function Posters() {
       <Nav />
       <main>
         <div className="marco-hero">
-          <Hero imagen="pos-hero" titulo={t('Posters — Mi zona de comfort', 'Posters — My comfort zone')} />
+          <Hero
+            imagen="pos-hero"
+            titulo={t('Posters — Mi zona de comfort', 'Posters — My comfort zone')}
+            movil={{
+              imagen: 'm-pos-hero',
+              titulo: [['Posters', 'Posters']],
+              sub: ['[ Mi zona de comfort ]', '[ My comfort zone ]'],
+              caja: [48, 640, 873, 940],
+              tam: 170,
+              tamSub: 46,
+              subNegro: true,
+              flecha: [460, 1068, 92],
+            }}
+          />
         </div>
         <section className="sec sec--negra posters-indice" id="contenido">
           <Tarjetas

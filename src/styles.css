@@ -546,6 +546,11 @@ ul {
   position: relative;
 }
 
+/* Portada para celular (imagen vertical con el texto encima): solo se ve en pantallas angostas. */
+.hero__movil {
+  display: none;
+}
+
 .hero img {
   width: 100%;
 }
@@ -2875,32 +2880,89 @@ ul {
     font-size: 12px;
   }
 
-  /* Las secciones de un proyecto miden lo que pide su contenido. La portada, en cambio, ocupa una pantalla
-     (descontando el header fijo): la imagen queda entera y el resto se llena con ella misma desenfocada. */
+  /* Las secciones de un proyecto miden lo que pide su contenido. La portada, en cambio, usa una imagen
+     vertical pensada para el celular, con el título (real y traducible) puesto encima. */
+  /* El marco beige de la portada, como en escritorio. */
   .marco-hero {
-    padding: 0;
-  }
-
-  .hero {
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    min-height: calc(100vh - 64px);
-    min-height: calc(100svh - 64px);
-    background: var(--oscuro);
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: -30px;
-    background: var(--fondo) 12% 50% / cover no-repeat;
-    filter: blur(18px) brightness(0.75) saturate(1.1);
+    padding: 0 14u 14u;
   }
 
   .hero__lienzo {
-    z-index: 1;
-    width: 100%;
+    display: none;
+  }
+
+  /* Los celulares vecinos de los reels asoman a los costados sin agrandar la página. */
+  .sec.dig-reels {
+    overflow: hidden;
+  }
+
+  .hero__movil {
+    position: relative;
+    display: block;
+    container-type: inline-size;
+  }
+
+  .hero__movil img {
+    display: block;
+    width: 100% !important;
+    height: auto;
+  }
+
+  .hero__movil-texto {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 4%;
+    color: #111;
+  }
+
+  .hero__movil-titulo {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+  }
+
+  .hero__movil-titulo span {
+    display: block;
+  }
+
+  .hero__movil-sub {
+    margin: 0.5em 0 0;
+    color: var(--rosa);
+    font-family: var(--display);
+    font-weight: 700;
+    line-height: 1.15;
+  }
+
+  .hero__movil-enlace {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    color: var(--crema);
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .hero__movil-flecha {
+    position: absolute;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .hero__movil-flecha:focus-visible,
+  .hero__movil-enlace:focus-visible {
+    outline: 2px solid var(--rosa);
+    outline-offset: 3px;
   }
 
   /* La computadora y el celular de las grabaciones se achican para entrar en el ancho de la pantalla
@@ -3244,7 +3306,12 @@ ul {
     width: auto;
   }
 
+  /* Relative (no static) para que la perilla rosa, que va en absoluto, quede dentro del interruptor. */
   .reels__switch {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 78u;
     margin-bottom: 22u;
   }
 
