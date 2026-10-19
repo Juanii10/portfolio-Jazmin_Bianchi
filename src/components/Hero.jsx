@@ -64,7 +64,7 @@ export default function Hero({ imagen, titulo, flecha, enlaces = [], destino = '
             </p>
           </div>
           {(movil.enlaces ?? []).map(({ href, etiqueta, caja: c }) => (
-            <a key={href} className="hero__movil-enlace" href={href} style={{ ...caja(c), fontSize: `${(26 / W) * 100}cqw` }}>
+            <a key={href} className="hero__movil-enlace" href={href} style={{ ...caja(c), fontSize: `${((movil.tamEnlace ?? 26) / W) * 100}cqw` }}>
               {t(...etiqueta)}
             </a>
           ))}

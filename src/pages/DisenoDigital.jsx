@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import Nav from '../components/Nav.jsx'
 import Footer from '../components/Footer.jsx'
 import Hero from '../components/Hero.jsx'
@@ -27,6 +28,25 @@ const ENLACES = [
 export default function DisenoDigital() {
   const { t } = useIdioma()
 
+  // El celular que asoma sobre la grilla de Bebidas solo se muestra cuando la grilla ya cargó (si no, se ve
+  // cortado mientras la imagen grande todavía se descarga).
+  const bebidas = useRef(null)
+  useEffect(() => {
+    const fig = bebidas.current
+    const grilla = fig?.querySelector('img:not(.dig-bebidas__tope)')
+    if (!grilla) return
+    const listo = () => fig.classList.add('cargado')
+    if (grilla.complete && grilla.naturalWidth) listo()
+    else {
+      grilla.addEventListener('load', listo)
+      grilla.addEventListener('error', listo)
+    }
+    return () => {
+      grilla.removeEventListener('load', listo)
+      grilla.removeEventListener('error', listo)
+    }
+  }, [])
+
   // Marcas de la sección "Edición de reels". Cada una cambia el nombre, la fecha y los celulares.
   const marcas = [
     { nombre: 'Cuan Arquitectura', fecha: 'Julio 2025 - Actualidad', reels: reelsDe('cuan', 'Cuan Arquitectura', t) },
@@ -45,21 +65,22 @@ export default function DisenoDigital() {
             titulo={t('Diseño digital — Donde pienso, creo y resuelvo', 'Digital design — Where I think, create and solve')}
             flecha={[49.98, 85.64]}
             movil={{
-              imagen: 'm-dig-hero',
+              imagen: 'm-dig-hero-2',
               titulo: [
                 ['Diseño', 'Digital'],
                 ['Digital', 'design'],
               ],
               sub: ['[ Donde pienso, creo y resuelvo ]', '[ Where I think, create and solve ]'],
-              caja: [128, 563, 784, 962],
-              tam: 118,
-              tamSub: 33,
-              flecha: [461, 1144, 94],
+              caja: [125, 500, 680, 835],
+              tam: 103,
+              tamSub: 29,
+              tamEnlace: 23,
+              flecha: [368, 962, 81],
               enlaces: [
-                { href: '#piezas-para-redes', etiqueta: ['Piezas para redes', 'Social media pieces'], caja: [93, 385, 390, 432] },
-                { href: '#banners-web', etiqueta: ['Banners Web', 'Web Banners'], caja: [516, 384, 812, 432] },
-                { href: '#edicion-de-reels', etiqueta: ['Edición de reels', 'Reel editing'], caja: [95, 1282, 390, 1329] },
-                { href: '#diseno-web', etiqueta: ['Diseño web', 'Web design'], caja: [519, 1283, 807, 1328] },
+                { href: '#piezas-para-redes', etiqueta: ['Piezas para redes', 'Social media pieces'], caja: [81, 339, 342, 381] },
+                { href: '#banners-web', etiqueta: ['Banners Web', 'Web Banners'], caja: [451, 339, 710, 380] },
+                { href: '#edicion-de-reels', etiqueta: ['Edición de reels', 'Reel editing'], caja: [83, 1123, 343, 1165] },
+                { href: '#diseno-web', etiqueta: ['Diseño web', 'Web design'], caja: [453, 1123, 707, 1163] },
               ],
             }}
             enlaces={ENLACES.map(({ es, en, ...resto }) => ({ etiqueta: t(es, en), ...resto }))}
@@ -103,7 +124,7 @@ export default function DisenoDigital() {
                 )}
               </p>
             </Proyecto>
-            <div className="dig-bebidas__fig">
+            <div className="dig-bebidas__fig" ref={bebidas}>
               <Img className="dig-bebidas__tope" name="dig-bebidas-celu-tope" alt="" />
               <Img
                 name="dig-bebidas-grilla"
@@ -145,7 +166,7 @@ export default function DisenoDigital() {
             />
             <Img
               className="a-ancho dig-banner dig-banner--2"
-              name="dig-banner-comardex-2"
+              name="dig-banner-comardex-4"
               alt={t('Comardex 2025: banner web «Productos 100% originales»', 'Comardex 2025: web banner “Productos 100% originales”')}
             />
           </section>

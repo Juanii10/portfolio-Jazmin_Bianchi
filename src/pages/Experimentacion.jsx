@@ -102,7 +102,14 @@ export default function Experimentacion() {
                   </p>
                 </Proyecto>
                 <Img
+                  className="exp-mov-fotos"
                   name="exp-mov-fotos"
+                  alt={t('Relevamiento fotográfico de plazas: texturas y formas', 'Photographic survey of playgrounds: textures and shapes')}
+                />
+                {/* Misma imagen con los rótulos «Texturas» y «Formas» más chicos: es la que se ve en celular. */}
+                <Img
+                  className="exp-mov-fotos-m"
+                  name="exp-mov-fotos-m"
                   alt={t('Relevamiento fotográfico de plazas: texturas y formas', 'Photographic survey of playgrounds: textures and shapes')}
                 />
               </div>

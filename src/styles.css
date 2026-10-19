@@ -1484,6 +1484,10 @@ ul {
 
 /* ───────────── Experimentación ───────────── */
 
+.exp-mov-fotos-m {
+  display: none;
+}
+
 .exp-palabras__cabecera {
   padding: 66u 0 0 57u;
 }
@@ -1881,6 +1885,10 @@ ul {
   left: 543u;
   bottom: 100%;
   width: 364u;
+}
+
+.dig-bebidas__fig:not(.cargado) .dig-bebidas__tope {
+  visibility: hidden;
 }
 
 .dig-caterina {
@@ -3204,6 +3212,14 @@ ul {
 
   .exp-movimiento__izq img {
     order: 2;
+  }
+
+  .sec .exp-mov-fotos {
+    display: none;
+  }
+
+  .sec .exp-mov-fotos-m {
+    display: block;
   }
 
   /* El espacio sobre la frase es el mismo que hay dentro de esa foto entre las fotos de «Texturas» y el rótulo
