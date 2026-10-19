@@ -76,8 +76,8 @@
     "w": 1200
   },
   "dig-visionar-celu": {
-    "h": 2036,
-    "w": 1000
+    "h": 1200,
+    "w": 900
   },
   "dig-visionar-stories": {
     "h": 736,
@@ -100,8 +100,8 @@
     "w": 1206
   },
   "dig-caterina-celu": {
-    "h": 2048,
-    "w": 1000
+    "h": 1200,
+    "w": 900
   },
   "dig-banner-mueblin": {
     "h": 1010,
@@ -202,14 +202,6 @@
   "exp-col-izq-3": {
     "h": 1072,
     "w": 794
-  },
-  "m-dig-visionar-celu": {
-    "h": 1200,
-    "w": 900
-  },
-  "m-dig-caterina-celu": {
-    "h": 1200,
-    "w": 900
   },
   "m-pap-hero": {
     "h": 1680,

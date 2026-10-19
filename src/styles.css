@@ -1848,11 +1848,6 @@ ul {
   margin-bottom: -28u;
 }
 
-/* Foto del celular que solo se usa en la versión de celular. */
-.dig-redes__celu-movil {
-  display: none;
-}
-
 .dig-redes__stories {
   width: 1166u;
   max-width: none;
@@ -3272,17 +3267,6 @@ ul {
     margin: 20u 0 0 !important;
   }
 
-  /* En celular, los dos celulares gigantes se reemplazan por una foto más chica. */
-  .dig-redes__celu {
-    display: none;
-  }
-
-  .dig-redes__celu-movil {
-    display: block;
-    width: 100%;
-    max-width: none;
-    margin: 20u 0 0 !important;
-  }
 
   .dig-bebidas {
     padding: 40u 22u;
