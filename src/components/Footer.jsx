@@ -22,7 +22,7 @@ export function Icono({ children, texto }) {
   return <span className="icono">{texto ?? children}</span>
 }
 
-const CORREO = 'jachubianchi@outlook.com'
+const CORREO = 'bianchi.jazmin@hotmail.com'
 const enCodigo = encodeURIComponent
 
 // Mail de contacto: abre la app de correo (mailto:) con el destinatario y un asunto. Si el navegador no
