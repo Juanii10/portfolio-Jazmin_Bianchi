@@ -544,12 +544,75 @@ ul {
 
 .hero__lienzo {
   position: relative;
+  container-type: inline-size;
 }
 
 /* Portada para celular (imagen vertical con el texto encima): solo se ve en pantallas angostas. */
 .hero__movil {
   display: none;
 }
+
+/* Texto real sobre la portada (título, subtítulo y botones): sirve para la vertical de celular y la ancha de escritorio,
+   así se traduce. Los tamaños van en cqw, relativos al ancho de la imagen. */
+.hero__movil-texto {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 4%;
+  color: #111;
+}
+
+.hero__movil-titulo {
+  margin: 0;
+  /* Muy pesada y ancha, como las letras de los diseños (Arial Black si el equipo la tiene; si no, Helvetica en negrita). */
+  font-family: 'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+}
+
+.hero__movil-titulo span {
+  display: block;
+}
+
+.hero__movil-sub {
+  white-space: nowrap;
+  margin: 0.5em 0 0;
+  color: var(--rosa);
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.hero__movil-enlace {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--crema);
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.hero__movil-flecha {
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero__movil-flecha:focus-visible,
+.hero__movil-enlace:focus-visible {
+  outline: 2px solid var(--rosa);
+  outline-offset: 3px;
+}
+
 
 .hero img {
   width: 100%;
@@ -2924,61 +2987,11 @@ ul {
     height: auto;
   }
 
-  .hero__movil-texto {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 4%;
-    color: #111;
-  }
-
-  .hero__movil-titulo {
-    margin: 0;
-    font-family: var(--display);
-    font-weight: 800;
-    line-height: 0.92;
-    letter-spacing: -0.02em;
-  }
-
-  .hero__movil-titulo span {
-    display: block;
-  }
-
-  .hero__movil-sub {
-    margin: 0.5em 0 0;
-    color: var(--rosa);
-    font-family: var(--display);
-    font-weight: 700;
-    line-height: 1.15;
-  }
-
-  .hero__movil-enlace {
-    position: absolute;
-    display: grid;
-    place-items: center;
-    border-radius: 999px;
-    color: var(--crema);
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
   .hero__movil-flecha {
     position: absolute;
     aspect-ratio: 1;
     border-radius: 50%;
     transform: translate(-50%, -50%);
-  }
-
-  .hero__movil-flecha:focus-visible,
-  .hero__movil-enlace:focus-visible {
-    outline: 2px solid var(--rosa);
-    outline-offset: 3px;
   }
 
   /* La computadora y el celular de las grabaciones se achican para entrar en el ancho de la pantalla

@@ -222,5 +222,21 @@
   "dig-banner-comardex-4": {
     "h": 828,
     "w": 1997
+  },
+  "exp-hero-pc": {
+    "h": 940,
+    "w": 1918
+  },
+  "dig-hero-pc": {
+    "h": 940,
+    "w": 1918
+  },
+  "pos-hero-pc": {
+    "h": 749,
+    "w": 1532
+  },
+  "pap-hero-pc": {
+    "h": 749,
+    "w": 1533
   }
 }

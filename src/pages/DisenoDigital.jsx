@@ -75,12 +75,28 @@ export default function DisenoDigital() {
               tam: 103,
               tamSub: 29,
               tamEnlace: 23,
-              flecha: [368, 962, 81],
+              flecha: [408, 1002, 81],
               enlaces: [
                 { href: '#piezas-para-redes', etiqueta: ['Piezas para redes', 'Social media pieces'], caja: [81, 339, 342, 381] },
                 { href: '#banners-web', etiqueta: ['Banners Web', 'Web Banners'], caja: [451, 339, 710, 380] },
                 { href: '#edicion-de-reels', etiqueta: ['Edición de reels', 'Reel editing'], caja: [83, 1123, 343, 1165] },
                 { href: '#diseno-web', etiqueta: ['Diseño web', 'Web design'], caja: [453, 1123, 707, 1163] },
+              ],
+            }}
+            escritorio={{
+              imagen: 'dig-hero-pc',
+              titulo: [['Diseño Digital', 'Digital design']],
+              sub: ['[ Donde pienso, creo y resuelvo ]', '[ Where I think, create and solve ]'],
+              caja: [650, 270, 1270, 610],
+              tam: 95,
+              tamSub: 35,
+              tamEnlace: 27,
+              flecha: [959.5, 805, 63],
+              enlaces: [
+                { href: '#piezas-para-redes', etiqueta: ['Piezas para redes', 'Social media pieces'], caja: [136, 85, 445, 135] },
+                { href: '#banners-web', etiqueta: ['Banners Web', 'Web Banners'], caja: [620, 85, 928, 135] },
+                { href: '#edicion-de-reels', etiqueta: ['Edición de reels', 'Reel editing'], caja: [1072, 85, 1380, 135] },
+                { href: '#diseno-web', etiqueta: ['Diseño web', 'Web design'], caja: [1520, 85, 1827, 135] },
               ],
             }}
             enlaces={ENLACES.map(({ es, en, ...resto }) => ({ etiqueta: t(es, en), ...resto }))}

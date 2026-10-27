@@ -14,6 +14,15 @@ export default function Posters() {
           <Hero
             imagen="pos-hero"
             titulo={t('Posters — Mi zona de comfort', 'Posters — My comfort zone')}
+            escritorio={{
+              imagen: 'pos-hero-pc',
+              titulo: [['Posters', 'Posters']],
+              sub: ['[ Mi zona de comfort ]', '[ My comfort zone ]'],
+              caja: [300, 200, 1230, 520],
+              tam: 171,
+              tamSub: 57,
+              subNegro: true,
+            }}
             movil={{
               imagen: 'm-pos-hero',
               titulo: [['Posters', 'Posters']],
